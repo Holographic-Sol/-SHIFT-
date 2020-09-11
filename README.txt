@@ -19,6 +19,7 @@ WHY?
 1. Many files/directories are updated automatically like programs, for example Steam games.
 2. Alot of the time I am editing many files in many places and find myself going in and out of directories everywhere copying things over to backup drives.
 3. I wrote this because I have a lot of documents and games and when i back up i'd like it to be faster and so instead of procrastinating i saved my future self time and kept leanrning.
+4. I would like to update my backup drives, not overwrite everything. This is better for long term drive health by writing conservatively and saves enormous amounts of time.
 
 
 
