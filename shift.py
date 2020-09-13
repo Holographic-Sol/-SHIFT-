@@ -91,7 +91,7 @@ class App(QMainWindow):
         self.setWindowIcon(QIcon('./icon.png'))
         self.title = '[SHIFT] Extreme Backup Solution'
         # Set Window Width And Height
-        self.width = (605 + 25)
+        self.width = 630
         self.height = 310
         # Position Window On The Display
         scr_w = GetSystemMetrics(0)
@@ -1748,20 +1748,20 @@ class App(QMainWindow):
         self.paths_readonly_btn_5.setIconSize(QSize(8, 8))
 
     def hide_back_lables(self):
-        self.back_label_var[0].resize(95, 80)
-        self.back_label_var[1].resize(95, 80)
-        self.back_label_var[2].resize(95, 80)
-        self.back_label_var[3].resize(95, 80)
-        self.back_label_var[4].resize(95, 80)
-        self.back_label_var[5].resize(95, 80)
+        self.back_label_var[0].resize(99, 80)
+        self.back_label_var[1].resize(99, 80)
+        self.back_label_var[2].resize(99, 80)
+        self.back_label_var[3].resize(99, 80)
+        self.back_label_var[4].resize(99, 80)
+        self.back_label_var[5].resize(99, 80)
 
     def show_back_labels(self):
-        self.back_label_var[0].resize(95, 85)
-        self.back_label_var[1].resize(95, 85)
-        self.back_label_var[2].resize(95, 85)
-        self.back_label_var[3].resize(95, 85)
-        self.back_label_var[4].resize(95, 85)
-        self.back_label_var[5].resize(95, 85)
+        self.back_label_var[0].resize(99, 85)
+        self.back_label_var[1].resize(99, 85)
+        self.back_label_var[2].resize(99, 85)
+        self.back_label_var[3].resize(99, 85)
+        self.back_label_var[4].resize(99, 85)
+        self.back_label_var[5].resize(99, 85)
 
     def settings_drop_down_pre_funk_0(self):
         global settings_active_int
