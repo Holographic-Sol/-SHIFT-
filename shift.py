@@ -1308,65 +1308,135 @@ class App(QMainWindow):
         self.cnfg_prof_btn_8.setStyleSheet(self.default_title_config_prof_qpbtn_style)
         self.cnfg_prof_btn_9.setStyleSheet(self.default_title_config_prof_qpbtn_style)
 
-    def cnfg_prof_funk_0(self):
-        global cfg_f
-        self.cnfg_prof_btn_style_funk_0()
-        self.cnfg_prof_btn_0.setStyleSheet(self.default_title_config_prof_qpbtn_style_1)
-        cfg_f = './config_profile_0.txt'
+    def cnfg_prof_funk_0(self):  # self.update_settings_window_thread.start()
+        global cfg_f,configuration_engaged
+        if configuration_engaged is False:
+            print('-- configuration_engaged:', configuration_engaged)
+
+            self.cnfg_prof_btn_style_funk_0()
+            self.cnfg_prof_btn_0.setStyleSheet(self.default_title_config_prof_qpbtn_style_1)
+            cfg_f = './config_profile_0.txt'
+
+            self.update_settings_window_thread.start()
+        elif configuration_engaged is True:
+            print('-- configuration_engaged:', configuration_engaged)
 
     def cnfg_prof_funk_1(self):
-        global cfg_f
-        self.cnfg_prof_btn_style_funk_0()
-        self.cnfg_prof_btn_1.setStyleSheet(self.default_title_config_prof_qpbtn_style_1)
-        cfg_f = './config_profile_1.txt'
+        global cfg_f,configuration_engaged
+        if configuration_engaged is False:
+            print('-- configuration_engaged:', configuration_engaged)
+
+            self.cnfg_prof_btn_style_funk_0()
+            self.cnfg_prof_btn_1.setStyleSheet(self.default_title_config_prof_qpbtn_style_1)
+            cfg_f = './config_profile_1.txt'
+
+            self.update_settings_window_thread.start()
+        elif configuration_engaged is True:
+            print('-- configuration_engaged:', configuration_engaged)
 
     def cnfg_prof_funk_2(self):
-        global cfg_f
-        self.cnfg_prof_btn_style_funk_0()
-        self.cnfg_prof_btn_2.setStyleSheet(self.default_title_config_prof_qpbtn_style_1)
-        cfg_f = './config_profile_2.txt'
+        global cfg_f,configuration_engaged
+        if configuration_engaged is False:
+            print('-- configuration_engaged:', configuration_engaged)
+
+            self.cnfg_prof_btn_style_funk_0()
+            self.cnfg_prof_btn_2.setStyleSheet(self.default_title_config_prof_qpbtn_style_1)
+            cfg_f = './config_profile_2.txt'
+
+            self.update_settings_window_thread.start()
+        elif configuration_engaged is True:
+            print('-- configuration_engaged:', configuration_engaged)
 
     def cnfg_prof_funk_3(self):
-        global cfg_f
-        self.cnfg_prof_btn_style_funk_0()
-        self.cnfg_prof_btn_3.setStyleSheet(self.default_title_config_prof_qpbtn_style_1)
-        cfg_f = './config_profile_3.txt'
+        global cfg_f,configuration_engaged
+        if configuration_engaged is False:
+            print('-- configuration_engaged:', configuration_engaged)
+
+            self.cnfg_prof_btn_style_funk_0()
+            self.cnfg_prof_btn_3.setStyleSheet(self.default_title_config_prof_qpbtn_style_1)
+            cfg_f = './config_profile_3.txt'
+
+            self.update_settings_window_thread.start()
+        elif configuration_engaged is True:
+            print('-- configuration_engaged:', configuration_engaged)
 
     def cnfg_prof_funk_4(self):
-        global cfg_f
-        self.cnfg_prof_btn_style_funk_0()
-        self.cnfg_prof_btn_4.setStyleSheet(self.default_title_config_prof_qpbtn_style_1)
-        cfg_f = './config_profile_4.txt'
+        global cfg_f,configuration_engaged
+        if configuration_engaged is False:
+            print('-- configuration_engaged:', configuration_engaged)
+
+            self.cnfg_prof_btn_style_funk_0()
+            self.cnfg_prof_btn_4.setStyleSheet(self.default_title_config_prof_qpbtn_style_1)
+            cfg_f = './config_profile_4.txt'
+
+            self.update_settings_window_thread.start()
+        elif configuration_engaged is True:
+            print('-- configuration_engaged:', configuration_engaged)
 
     def cnfg_prof_funk_5(self):
-        global cfg_f
-        self.cnfg_prof_btn_style_funk_0()
-        self.cnfg_prof_btn_5.setStyleSheet(self.default_title_config_prof_qpbtn_style_1)
-        cfg_f = './config_profile_5.txt'
+        global cfg_f,configuration_engaged
+        if configuration_engaged is False:
+            print('-- configuration_engaged:', configuration_engaged)
+
+            self.cnfg_prof_btn_style_funk_0()
+            self.cnfg_prof_btn_5.setStyleSheet(self.default_title_config_prof_qpbtn_style_1)
+            cfg_f = './config_profile_5.txt'
+
+            self.update_settings_window_thread.start()
+        elif configuration_engaged is True:
+            print('-- configuration_engaged:', configuration_engaged)
 
     def cnfg_prof_funk_6(self):
-        global cfg_f
-        self.cnfg_prof_btn_style_funk_0()
-        self.cnfg_prof_btn_6.setStyleSheet(self.default_title_config_prof_qpbtn_style_1)
-        cfg_f = './config_profile_6.txt'
+        global cfg_f,configuration_engaged
+        if configuration_engaged is False:
+            print('-- configuration_engaged:', configuration_engaged)
+
+            self.cnfg_prof_btn_style_funk_0()
+            self.cnfg_prof_btn_6.setStyleSheet(self.default_title_config_prof_qpbtn_style_1)
+            cfg_f = './config_profile_6.txt'
+
+            self.update_settings_window_thread.start()
+        elif configuration_engaged is True:
+            print('-- configuration_engaged:', configuration_engaged)
 
     def cnfg_prof_funk_7(self):
-        global cfg_f
-        self.cnfg_prof_btn_style_funk_0()
-        self.cnfg_prof_btn_7.setStyleSheet(self.default_title_config_prof_qpbtn_style_1)
-        cfg_f = './config_profile_7.txt'
+        global cfg_f,configuration_engaged
+        if configuration_engaged is False:
+            print('-- configuration_engaged:', configuration_engaged)
+
+            self.cnfg_prof_btn_style_funk_0()
+            self.cnfg_prof_btn_7.setStyleSheet(self.default_title_config_prof_qpbtn_style_1)
+            cfg_f = './config_profile_7.txt'
+
+            self.update_settings_window_thread.start()
+        elif configuration_engaged is True:
+            print('-- configuration_engaged:', configuration_engaged)
 
     def cnfg_prof_funk_8(self):
-        global cfg_f
-        self.cnfg_prof_btn_style_funk_0()
-        self.cnfg_prof_btn_8.setStyleSheet(self.default_title_config_prof_qpbtn_style_1)
-        cfg_f = './config_profile_8.txt'
+        global cfg_f,configuration_engaged
+        if configuration_engaged is False:
+            print('-- configuration_engaged:', configuration_engaged)
+
+            self.cnfg_prof_btn_style_funk_0()
+            self.cnfg_prof_btn_8.setStyleSheet(self.default_title_config_prof_qpbtn_style_1)
+            cfg_f = './config_profile_8.txt'
+
+            self.update_settings_window_thread.start()
+        elif configuration_engaged is True:
+            print('-- configuration_engaged:', configuration_engaged)
 
     def cnfg_prof_funk_9(self):
-        global cfg_f
-        self.cnfg_prof_btn_style_funk_0()
-        self.cnfg_prof_btn_9.setStyleSheet(self.default_title_config_prof_qpbtn_style_1)
-        cfg_f = './config_profile_9.txt'
+        global cfg_f,configuration_engaged
+        if configuration_engaged is False:
+            print('-- configuration_engaged:', configuration_engaged)
+
+            self.cnfg_prof_btn_style_funk_0()
+            self.cnfg_prof_btn_9.setStyleSheet(self.default_title_config_prof_qpbtn_style_1)
+            cfg_f = './config_profile_9.txt'
+
+            self.update_settings_window_thread.start()
+        elif configuration_engaged is True:
+            print('-- configuration_engaged:', configuration_engaged)
 
     # Sector 2: Set's Configuration Title(s)
     def setting_title_B_funk(self):
@@ -1701,7 +1771,6 @@ class App(QMainWindow):
         self.hide_settings_funk()
         self.show_settings_title()
         self.settings_title_focus_false()
-        self.show_back_labels()
         self.highlight_off_0()
 
         # Emphasize Importance
@@ -1746,22 +1815,6 @@ class App(QMainWindow):
         self.paths_readonly_btn_3.setIconSize(QSize(8, 8))
         self.paths_readonly_btn_4.setIconSize(QSize(8, 8))
         self.paths_readonly_btn_5.setIconSize(QSize(8, 8))
-
-    def hide_back_lables(self):
-        self.back_label_var[0].resize(99, 80)
-        self.back_label_var[1].resize(99, 80)
-        self.back_label_var[2].resize(99, 80)
-        self.back_label_var[3].resize(99, 80)
-        self.back_label_var[4].resize(99, 80)
-        self.back_label_var[5].resize(99, 80)
-
-    def show_back_labels(self):
-        self.back_label_var[0].resize(99, 85)
-        self.back_label_var[1].resize(99, 85)
-        self.back_label_var[2].resize(99, 85)
-        self.back_label_var[3].resize(99, 85)
-        self.back_label_var[4].resize(99, 85)
-        self.back_label_var[5].resize(99, 85)
 
     def settings_drop_down_pre_funk_0(self):
         global settings_active_int
@@ -1849,7 +1902,6 @@ class App(QMainWindow):
         self.settings_dest_label.setStyleSheet(self.default_qlbl_highlight)
         self.tb_label_0.setStyleSheet(self.default_qlbl_highlight)
         self.paths_readonly_btn_var[settings_active_int].setStyleSheet(self.default_qpb_highlight)
-        #self.setting_title_B_var[settings_active_int].setStyleSheet(self.default_qle_highlight_0)
 
         self.btnx_settings_var[settings_active_int].setIcon(QIcon(self.img_show_menu_true))
         self.paths_readonly_btn_var[settings_active_int].setIconSize(QSize(8, 8))
@@ -2141,9 +2193,11 @@ class UpdateSettingsWindow(QThread):
     # Run This Thread While Program Is Alive And Read Configuration File
     def run(self):
         global debug_enabled
-        while __name__ == '__main__':
-            self.get_conf_funk()
-            time.sleep(1)
+        print('-- plugged in: UpdateSettingsWindow')
+        self.get_conf_funk()
+        #while __name__ == '__main__':
+        #    self.get_conf_funk()
+        #    time.sleep(1)
 
     # While Source And Destination Path Configuration Edit ReadOnly, Check Configured Paths Existance And Set Boolean Accordingly
     def get_conf_funk(self):
@@ -2159,6 +2213,7 @@ class UpdateSettingsWindow(QThread):
                 check_var.append(True)
             i += 1
         if not False in check_var:
+            print('-- reading configuration')
             name_max_chars = 16
             name_tile = []
             path_var = []
