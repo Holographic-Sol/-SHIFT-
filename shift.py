@@ -139,121 +139,45 @@ class App(QMainWindow):
         self.tb_var = []
         self.cnfg_prof_btn_var = []
         self.confirm_op_var = []
+
+        # Title Bar: Geometry
         cnfg_prof_btn_h = 10
         cnfg_prof_btn_w = 40
         tot_prof_btn_w = (cnfg_prof_btn_w * 10) + (5 * 9)
         cnfg_prof_btn_ph = 4
         cnfg_prof_btn_pw = (self.width / 2) - (tot_prof_btn_w / 2)
-
-        # Tiltle Bar: Configuration Profile 0
-        self.cnfg_prof_btn_0 = QPushButton(self)
-        self.cnfg_prof_btn_0.move(cnfg_prof_btn_pw, cnfg_prof_btn_ph)
-        self.cnfg_prof_btn_0.resize(cnfg_prof_btn_w, cnfg_prof_btn_h)
-        self.cnfg_prof_btn_0.setFont(self.font_s5b)
-        self.cnfg_prof_btn_0.setText('SHIFT 0')
-        self.cnfg_prof_btn_0.setIconSize(QSize(12, 12))
-        self.cnfg_prof_btn_0.clicked.connect(self.cnfg_prof_funk_0)
-        self.cnfg_prof_btn_0.setStyleSheet(self.default_title_config_prof_qpbtn_style_1)
-        self.cnfg_prof_btn_var.append(self.cnfg_prof_btn_0)
-
-        # Tiltle Bar: Configuration Profile 1
-        self.cnfg_prof_btn_1 = QPushButton(self)
-        self.cnfg_prof_btn_1.move((cnfg_prof_btn_pw + cnfg_prof_btn_w + 5), cnfg_prof_btn_ph)
-        self.cnfg_prof_btn_1.resize(cnfg_prof_btn_w, cnfg_prof_btn_h)
-        self.cnfg_prof_btn_1.setFont(self.font_s5b)
-        self.cnfg_prof_btn_1.setText('SHIFT 1')
-        self.cnfg_prof_btn_1.setIconSize(QSize(12, 12))
-        self.cnfg_prof_btn_1.clicked.connect(self.cnfg_prof_funk_1)
-        self.cnfg_prof_btn_1.setStyleSheet(self.default_title_config_prof_qpbtn_style)
-        self.cnfg_prof_btn_var.append(self.cnfg_prof_btn_1)
-
-        # Tiltle Bar: Configuration Profile 2
-        self.cnfg_prof_btn_2 = QPushButton(self)
-        self.cnfg_prof_btn_2.move((cnfg_prof_btn_pw + (cnfg_prof_btn_w * 2) + 10), cnfg_prof_btn_ph)
-        self.cnfg_prof_btn_2.resize(cnfg_prof_btn_w, cnfg_prof_btn_h)
-        self.cnfg_prof_btn_2.setFont(self.font_s5b)
-        self.cnfg_prof_btn_2.setText('SHIFT 2')
-        self.cnfg_prof_btn_2.setIconSize(QSize(12, 12))
-        self.cnfg_prof_btn_2.clicked.connect(self.cnfg_prof_funk_2)
-        self.cnfg_prof_btn_2.setStyleSheet(self.default_title_config_prof_qpbtn_style)
-        self.cnfg_prof_btn_var.append(self.cnfg_prof_btn_2)
-
-        # Tiltle Bar: Configuration Profile 3
-        self.cnfg_prof_btn_3 = QPushButton(self)
-        self.cnfg_prof_btn_3.move((cnfg_prof_btn_pw + (cnfg_prof_btn_w * 3) + 15), cnfg_prof_btn_ph)
-        self.cnfg_prof_btn_3.resize(cnfg_prof_btn_w, cnfg_prof_btn_h)
-        self.cnfg_prof_btn_3.setFont(self.font_s5b)
-        self.cnfg_prof_btn_3.setText('SHIFT 3')
-        self.cnfg_prof_btn_3.setIconSize(QSize(12, 12))
-        self.cnfg_prof_btn_3.clicked.connect(self.cnfg_prof_funk_3)
-        self.cnfg_prof_btn_3.setStyleSheet(self.default_title_config_prof_qpbtn_style)
-        self.cnfg_prof_btn_var.append(self.cnfg_prof_btn_3)
-
-        # Tiltle Bar: Configuration Profile 4
-        self.cnfg_prof_btn_4 = QPushButton(self)
-        self.cnfg_prof_btn_4.move((cnfg_prof_btn_pw + (cnfg_prof_btn_w * 4) + 20), cnfg_prof_btn_ph)
-        self.cnfg_prof_btn_4.resize(cnfg_prof_btn_w, cnfg_prof_btn_h)
-        self.cnfg_prof_btn_4.setFont(self.font_s5b)
-        self.cnfg_prof_btn_4.setText('SHIFT 4')
-        self.cnfg_prof_btn_4.setIconSize(QSize(12, 12))
-        self.cnfg_prof_btn_4.clicked.connect(self.cnfg_prof_funk_4)
-        self.cnfg_prof_btn_4.setStyleSheet(self.default_title_config_prof_qpbtn_style)
-        self.cnfg_prof_btn_var.append(self.cnfg_prof_btn_4)
-
-        # Tiltle Bar: Configuration Profile 5
-        self.cnfg_prof_btn_5 = QPushButton(self)
-        self.cnfg_prof_btn_5.move((cnfg_prof_btn_pw + (cnfg_prof_btn_w * 5) + 25), cnfg_prof_btn_ph)
-        self.cnfg_prof_btn_5.resize(cnfg_prof_btn_w, cnfg_prof_btn_h)
-        self.cnfg_prof_btn_5.setFont(self.font_s5b)
-        self.cnfg_prof_btn_5.setText('SHIFT 5')
-        self.cnfg_prof_btn_5.setIconSize(QSize(12, 12))
-        self.cnfg_prof_btn_5.clicked.connect(self.cnfg_prof_funk_5)
-        self.cnfg_prof_btn_5.setStyleSheet(self.default_title_config_prof_qpbtn_style)
-        self.cnfg_prof_btn_var.append(self.cnfg_prof_btn_5)
-
-        # Tiltle Bar: Configuration Profile 6
-        self.cnfg_prof_btn_6 = QPushButton(self)
-        self.cnfg_prof_btn_6.move((cnfg_prof_btn_pw + (cnfg_prof_btn_w * 6) + 30), cnfg_prof_btn_ph)
-        self.cnfg_prof_btn_6.resize(cnfg_prof_btn_w, cnfg_prof_btn_h)
-        self.cnfg_prof_btn_6.setFont(self.font_s5b)
-        self.cnfg_prof_btn_6.setText('SHIFT 6')
-        self.cnfg_prof_btn_6.setIconSize(QSize(12, 12))
-        self.cnfg_prof_btn_6.clicked.connect(self.cnfg_prof_funk_6)
-        self.cnfg_prof_btn_6.setStyleSheet(self.default_title_config_prof_qpbtn_style)
-        self.cnfg_prof_btn_var.append(self.cnfg_prof_btn_6)
-
-        # Tiltle Bar: Configuration Profile 7
-        self.cnfg_prof_btn_7 = QPushButton(self)
-        self.cnfg_prof_btn_7.move((cnfg_prof_btn_pw + (cnfg_prof_btn_w * 7) + 35), cnfg_prof_btn_ph)
-        self.cnfg_prof_btn_7.resize(cnfg_prof_btn_w, cnfg_prof_btn_h)
-        self.cnfg_prof_btn_7.setFont(self.font_s5b)
-        self.cnfg_prof_btn_7.setText('SHIFT 7')
-        self.cnfg_prof_btn_7.setIconSize(QSize(12, 12))
-        self.cnfg_prof_btn_7.clicked.connect(self.cnfg_prof_funk_7)
-        self.cnfg_prof_btn_7.setStyleSheet(self.default_title_config_prof_qpbtn_style)
-        self.cnfg_prof_btn_var.append(self.cnfg_prof_btn_7)
-
-        # Tiltle Bar: Configuration Profile 8
-        self.cnfg_prof_btn_8 = QPushButton(self)
-        self.cnfg_prof_btn_8.move((cnfg_prof_btn_pw + (cnfg_prof_btn_w * 8) + 40), cnfg_prof_btn_ph)
-        self.cnfg_prof_btn_8.resize(cnfg_prof_btn_w, cnfg_prof_btn_h)
-        self.cnfg_prof_btn_8.setFont(self.font_s5b)
-        self.cnfg_prof_btn_8.setText('SHIFT 8')
-        self.cnfg_prof_btn_8.setIconSize(QSize(12, 12))
-        self.cnfg_prof_btn_8.clicked.connect(self.cnfg_prof_funk_8)
-        self.cnfg_prof_btn_8.setStyleSheet(self.default_title_config_prof_qpbtn_style)
-        self.cnfg_prof_btn_var.append(self.cnfg_prof_btn_8)
-
-        # Tiltle Bar: Configuration Profile 9
-        self.cnfg_prof_btn_9 = QPushButton(self)
-        self.cnfg_prof_btn_9.move((cnfg_prof_btn_pw + (cnfg_prof_btn_w * 9) + 45), cnfg_prof_btn_ph)
-        self.cnfg_prof_btn_9.resize(cnfg_prof_btn_w, cnfg_prof_btn_h)
-        self.cnfg_prof_btn_9.setFont(self.font_s5b)
-        self.cnfg_prof_btn_9.setText('SHIFT 9')
-        self.cnfg_prof_btn_9.setIconSize(QSize(12, 12))
-        self.cnfg_prof_btn_9.clicked.connect(self.cnfg_prof_funk_9)
-        self.cnfg_prof_btn_9.setStyleSheet(self.default_title_config_prof_qpbtn_style)
-        self.cnfg_prof_btn_var.append(self.cnfg_prof_btn_9)
+        # Sector 1: Geometry Main Function
+        back_label_buffer = 6
+        back_label_ankor_w0 = 8
+        back_label_ankor_w1 = 111
+        back_label_ankor_w2 = 214
+        back_label_ankor_w3 = 317
+        back_label_ankor_w4 = 420
+        back_label_ankor_w5 = 523
+        back_label_ankor_h0 = 28
+        back_label_ankor_h1 = 28
+        back_label_ankor_h2 = 28
+        back_label_ankor_h3 = 28
+        back_label_ankor_h4 = 28
+        back_label_ankor_h5 = 28
+        btnx_buffer_0 = 3
+        btnx_w = 54
+        btnx_h = 54
+        confirm_op_w = 87
+        confirm_op_h = 13
+        title_lable_h = 13
+        # Sector 2: Geometry Source & Destination
+        user_paths_ankor_w = 107
+        user_paths_ankor_h = (back_label_ankor_h0 + back_label_buffer + btnx_h + btnx_buffer_0 + confirm_op_h + btnx_buffer_0 + 1 + title_lable_h + 7)
+        source_dest_buffer_w = 5
+        source_dest_buffer_h = 5
+        source_dest_w = (self.width - 152)
+        source_dest_h = 15
+        # Sector 3: Geometry Output
+        self.tb_w = self.width - 10
+        self.tb_pos_w = 5
+        self.tb_pos_h = 185
+        self.tb_h = (self.height - self.tb_pos_h - 5)
 
         # Title Bar: Logo
         self.title_logo_btn = QPushButton(self)
@@ -263,7 +187,6 @@ class App(QMainWindow):
         self.title_logo_btn.setIconSize(QSize(12, 12))
         self.title_logo_btn.clicked.connect(self.title_logo_btn_funk)
         self.title_logo_btn.setStyleSheet(self.default_title_qpb_style)
-
         # Title Bar: Close
         self.close_button = QPushButton(self)
         self.close_button.move((self.width - 20), 0)
@@ -280,6 +203,106 @@ class App(QMainWindow):
         self.minimize_button.setIconSize(QSize(50, 20))
         self.minimize_button.clicked.connect(self.showMinimized)
         self.minimize_button.setStyleSheet(self.default_title_qpb_style)
+        # Tiltle Bar: Configuration Profile 0
+        self.cnfg_prof_btn_0 = QPushButton(self)
+        self.cnfg_prof_btn_0.move(cnfg_prof_btn_pw, cnfg_prof_btn_ph)
+        self.cnfg_prof_btn_0.resize(cnfg_prof_btn_w, cnfg_prof_btn_h)
+        self.cnfg_prof_btn_0.setFont(self.font_s5b)
+        self.cnfg_prof_btn_0.setText('SHIFT 0')
+        self.cnfg_prof_btn_0.setIconSize(QSize(12, 12))
+        self.cnfg_prof_btn_0.clicked.connect(self.cnfg_prof_funk_0)
+        self.cnfg_prof_btn_0.setStyleSheet(self.default_title_config_prof_qpbtn_style_1)
+        self.cnfg_prof_btn_var.append(self.cnfg_prof_btn_0)
+        # Tiltle Bar: Configuration Profile 1
+        self.cnfg_prof_btn_1 = QPushButton(self)
+        self.cnfg_prof_btn_1.move((cnfg_prof_btn_pw + cnfg_prof_btn_w + 5), cnfg_prof_btn_ph)
+        self.cnfg_prof_btn_1.resize(cnfg_prof_btn_w, cnfg_prof_btn_h)
+        self.cnfg_prof_btn_1.setFont(self.font_s5b)
+        self.cnfg_prof_btn_1.setText('SHIFT 1')
+        self.cnfg_prof_btn_1.setIconSize(QSize(12, 12))
+        self.cnfg_prof_btn_1.clicked.connect(self.cnfg_prof_funk_1)
+        self.cnfg_prof_btn_1.setStyleSheet(self.default_title_config_prof_qpbtn_style)
+        self.cnfg_prof_btn_var.append(self.cnfg_prof_btn_1)
+        # Tiltle Bar: Configuration Profile 2
+        self.cnfg_prof_btn_2 = QPushButton(self)
+        self.cnfg_prof_btn_2.move((cnfg_prof_btn_pw + (cnfg_prof_btn_w * 2) + 10), cnfg_prof_btn_ph)
+        self.cnfg_prof_btn_2.resize(cnfg_prof_btn_w, cnfg_prof_btn_h)
+        self.cnfg_prof_btn_2.setFont(self.font_s5b)
+        self.cnfg_prof_btn_2.setText('SHIFT 2')
+        self.cnfg_prof_btn_2.setIconSize(QSize(12, 12))
+        self.cnfg_prof_btn_2.clicked.connect(self.cnfg_prof_funk_2)
+        self.cnfg_prof_btn_2.setStyleSheet(self.default_title_config_prof_qpbtn_style)
+        self.cnfg_prof_btn_var.append(self.cnfg_prof_btn_2)
+        # Tiltle Bar: Configuration Profile 3
+        self.cnfg_prof_btn_3 = QPushButton(self)
+        self.cnfg_prof_btn_3.move((cnfg_prof_btn_pw + (cnfg_prof_btn_w * 3) + 15), cnfg_prof_btn_ph)
+        self.cnfg_prof_btn_3.resize(cnfg_prof_btn_w, cnfg_prof_btn_h)
+        self.cnfg_prof_btn_3.setFont(self.font_s5b)
+        self.cnfg_prof_btn_3.setText('SHIFT 3')
+        self.cnfg_prof_btn_3.setIconSize(QSize(12, 12))
+        self.cnfg_prof_btn_3.clicked.connect(self.cnfg_prof_funk_3)
+        self.cnfg_prof_btn_3.setStyleSheet(self.default_title_config_prof_qpbtn_style)
+        self.cnfg_prof_btn_var.append(self.cnfg_prof_btn_3)
+        # Tiltle Bar: Configuration Profile 4
+        self.cnfg_prof_btn_4 = QPushButton(self)
+        self.cnfg_prof_btn_4.move((cnfg_prof_btn_pw + (cnfg_prof_btn_w * 4) + 20), cnfg_prof_btn_ph)
+        self.cnfg_prof_btn_4.resize(cnfg_prof_btn_w, cnfg_prof_btn_h)
+        self.cnfg_prof_btn_4.setFont(self.font_s5b)
+        self.cnfg_prof_btn_4.setText('SHIFT 4')
+        self.cnfg_prof_btn_4.setIconSize(QSize(12, 12))
+        self.cnfg_prof_btn_4.clicked.connect(self.cnfg_prof_funk_4)
+        self.cnfg_prof_btn_4.setStyleSheet(self.default_title_config_prof_qpbtn_style)
+        self.cnfg_prof_btn_var.append(self.cnfg_prof_btn_4)
+        # Tiltle Bar: Configuration Profile 5
+        self.cnfg_prof_btn_5 = QPushButton(self)
+        self.cnfg_prof_btn_5.move((cnfg_prof_btn_pw + (cnfg_prof_btn_w * 5) + 25), cnfg_prof_btn_ph)
+        self.cnfg_prof_btn_5.resize(cnfg_prof_btn_w, cnfg_prof_btn_h)
+        self.cnfg_prof_btn_5.setFont(self.font_s5b)
+        self.cnfg_prof_btn_5.setText('SHIFT 5')
+        self.cnfg_prof_btn_5.setIconSize(QSize(12, 12))
+        self.cnfg_prof_btn_5.clicked.connect(self.cnfg_prof_funk_5)
+        self.cnfg_prof_btn_5.setStyleSheet(self.default_title_config_prof_qpbtn_style)
+        self.cnfg_prof_btn_var.append(self.cnfg_prof_btn_5)
+        # Tiltle Bar: Configuration Profile 6
+        self.cnfg_prof_btn_6 = QPushButton(self)
+        self.cnfg_prof_btn_6.move((cnfg_prof_btn_pw + (cnfg_prof_btn_w * 6) + 30), cnfg_prof_btn_ph)
+        self.cnfg_prof_btn_6.resize(cnfg_prof_btn_w, cnfg_prof_btn_h)
+        self.cnfg_prof_btn_6.setFont(self.font_s5b)
+        self.cnfg_prof_btn_6.setText('SHIFT 6')
+        self.cnfg_prof_btn_6.setIconSize(QSize(12, 12))
+        self.cnfg_prof_btn_6.clicked.connect(self.cnfg_prof_funk_6)
+        self.cnfg_prof_btn_6.setStyleSheet(self.default_title_config_prof_qpbtn_style)
+        self.cnfg_prof_btn_var.append(self.cnfg_prof_btn_6)
+        # Tiltle Bar: Configuration Profile 7
+        self.cnfg_prof_btn_7 = QPushButton(self)
+        self.cnfg_prof_btn_7.move((cnfg_prof_btn_pw + (cnfg_prof_btn_w * 7) + 35), cnfg_prof_btn_ph)
+        self.cnfg_prof_btn_7.resize(cnfg_prof_btn_w, cnfg_prof_btn_h)
+        self.cnfg_prof_btn_7.setFont(self.font_s5b)
+        self.cnfg_prof_btn_7.setText('SHIFT 7')
+        self.cnfg_prof_btn_7.setIconSize(QSize(12, 12))
+        self.cnfg_prof_btn_7.clicked.connect(self.cnfg_prof_funk_7)
+        self.cnfg_prof_btn_7.setStyleSheet(self.default_title_config_prof_qpbtn_style)
+        self.cnfg_prof_btn_var.append(self.cnfg_prof_btn_7)
+        # Tiltle Bar: Configuration Profile 8
+        self.cnfg_prof_btn_8 = QPushButton(self)
+        self.cnfg_prof_btn_8.move((cnfg_prof_btn_pw + (cnfg_prof_btn_w * 8) + 40), cnfg_prof_btn_ph)
+        self.cnfg_prof_btn_8.resize(cnfg_prof_btn_w, cnfg_prof_btn_h)
+        self.cnfg_prof_btn_8.setFont(self.font_s5b)
+        self.cnfg_prof_btn_8.setText('SHIFT 8')
+        self.cnfg_prof_btn_8.setIconSize(QSize(12, 12))
+        self.cnfg_prof_btn_8.clicked.connect(self.cnfg_prof_funk_8)
+        self.cnfg_prof_btn_8.setStyleSheet(self.default_title_config_prof_qpbtn_style)
+        self.cnfg_prof_btn_var.append(self.cnfg_prof_btn_8)
+        # Tiltle Bar: Configuration Profile 9
+        self.cnfg_prof_btn_9 = QPushButton(self)
+        self.cnfg_prof_btn_9.move((cnfg_prof_btn_pw + (cnfg_prof_btn_w * 9) + 45), cnfg_prof_btn_ph)
+        self.cnfg_prof_btn_9.resize(cnfg_prof_btn_w, cnfg_prof_btn_h)
+        self.cnfg_prof_btn_9.setFont(self.font_s5b)
+        self.cnfg_prof_btn_9.setText('SHIFT 9')
+        self.cnfg_prof_btn_9.setIconSize(QSize(12, 12))
+        self.cnfg_prof_btn_9.clicked.connect(self.cnfg_prof_funk_9)
+        self.cnfg_prof_btn_9.setStyleSheet(self.default_title_config_prof_qpbtn_style)
+        self.cnfg_prof_btn_var.append(self.cnfg_prof_btn_9)
         # Sector 1: Background Colour
         self.back_label_main = QLabel(self)
         self.back_label_main.move(0, 20)
@@ -294,21 +317,6 @@ class App(QMainWindow):
             self.back_label.setStyleSheet(self.default_bg_tile_style)
             self.back_label_var.append(self.back_label)
             i += 1
-        # Sector 1: Background Tiles Positions W
-        back_label_left_buffer = 6
-        back_label_ankor_w0 = 8
-        back_label_ankor_w1 = 111
-        back_label_ankor_w2 = 214
-        back_label_ankor_w3 = 317
-        back_label_ankor_w4 = 420
-        back_label_ankor_w5 = 523
-        # Sector 1: Background Tiles Positions H
-        back_label_ankor_h0 = 25
-        back_label_ankor_h1 = 25
-        back_label_ankor_h2 = 25
-        back_label_ankor_h3 = 25
-        back_label_ankor_h4 = 25
-        back_label_ankor_h5 = 25
         # Sector 1: Background Tiles Moved Into Positions, W & H
         self.back_label_var[0].move(back_label_ankor_w0, back_label_ankor_h0)
         self.back_label_var[1].move(back_label_ankor_w1, back_label_ankor_h1)
@@ -316,8 +324,6 @@ class App(QMainWindow):
         self.back_label_var[3].move(back_label_ankor_w3, back_label_ankor_h3)
         self.back_label_var[4].move(back_label_ankor_w4, back_label_ankor_h4)
         self.back_label_var[5].move(back_label_ankor_w5, back_label_ankor_h5)
-        set_src_dst_w = (self.width - 152)
-        set_src_dst_pos_w = 107
 
         # Sector 1: Objects Placed On Top Background Tiles
         i = 0
@@ -325,7 +331,7 @@ class App(QMainWindow):
             # Sector 1: Main Function Button(s)
             btnx_name = 'btnx_main' + str(i)
             self.btnx_main = QPushButton(self)
-            self.btnx_main.resize(54, 54)
+            self.btnx_main.resize(btnx_w, btnx_h)
             self.btnx_main.setIcon(QIcon(self.img_btnx_led_0))
             self.btnx_main.setIconSize(QSize(54, 54))
             self.btnx_main.setStyleSheet(self.default_btnx_main_style)
@@ -359,7 +365,7 @@ class App(QMainWindow):
             paths_readonly_button = 'paths_readonly_button' + str(i)
             self.paths_readonly_button = QPushButton(self)
             self.paths_readonly_button.resize(15, 35)
-            self.paths_readonly_button.move((set_src_dst_pos_w + set_src_dst_w + 15), 126)
+            self.paths_readonly_button.move((user_paths_ankor_w + source_dest_w + 15), user_paths_ankor_h)
             self.paths_readonly_button.setIcon(QIcon(self.img_read_ony_true))
             self.paths_readonly_button.setIconSize(QSize(8, 8))
             self.paths_readonly_button.setStyleSheet(self.default_qpb_highlight)
@@ -421,7 +427,7 @@ class App(QMainWindow):
         self.scr_right.setStyleSheet(self.default_qpbtn_page_switch_style)
         # Sector 2: A Label To Signify Source Path Configuration
         self.settings_source_label = QLabel(self)
-        self.settings_source_label.move(15, 126)
+        self.settings_source_label.move(15, user_paths_ankor_h)
         self.settings_source_label.resize(87, 15)
         self.settings_source_label.setFont(self.font_s6b)
         self.settings_source_label.setText('Source:')
@@ -429,7 +435,7 @@ class App(QMainWindow):
         self.settings_source_label.setAlignment(Qt.AlignCenter) 
         # Sector 2: A Label To Signify Destination Path Configuration
         self.settings_dest_label = QLabel(self)
-        self.settings_dest_label.move(15, 145)
+        self.settings_dest_label.move(15, user_paths_ankor_h + source_dest_h + source_dest_buffer_h)
         self.settings_dest_label.resize(87, 15)
         self.settings_dest_label.setFont(self.font_s6b)
         self.settings_dest_label.setText('Destination:')
@@ -438,7 +444,7 @@ class App(QMainWindow):
         # Sector 2: Title Lable Signifies Which Path Is Displayed To Be Configured 0
         self.setting_title0 = QLabel(self)
         self.setting_title0.resize(87, 14)
-        self.setting_title0.move((back_label_ankor_w0 + back_label_left_buffer), 105)
+        self.setting_title0.move((back_label_ankor_w0 + back_label_buffer), (back_label_ankor_h0 + back_label_buffer + btnx_h + btnx_buffer_0 + confirm_op_h + btnx_buffer_0 + 1))
         self.setting_title0.setFont(self.font_s6b)
         self.setting_title0.setText("")
         self.setting_title0.setStyleSheet(self.default_qlbl_highlight)
@@ -448,7 +454,7 @@ class App(QMainWindow):
         # Sector 2: Title Lable Signifies Which Path Is Displayed To Be Configured 1
         self.setting_title1 = QLabel(self)
         self.setting_title1.resize(87, 14)
-        self.setting_title1.move((back_label_ankor_w1 + back_label_left_buffer), 105)
+        self.setting_title1.move((back_label_ankor_w1 + back_label_buffer), (back_label_ankor_h1 + back_label_buffer + btnx_h + btnx_buffer_0 + confirm_op_h + btnx_buffer_0 + 1))
         self.setting_title1.setFont(self.font_s6b)
         self.setting_title1.setText("")
         self.setting_title1.setStyleSheet(self.default_qlbl_style)
@@ -458,7 +464,7 @@ class App(QMainWindow):
         # Sector 2: Title Lable Signifies Which Path Is Displayed To Be Configured 2
         self.setting_title2 = QLabel(self)
         self.setting_title2.resize(87, 14)
-        self.setting_title2.move((back_label_ankor_w2 + back_label_left_buffer), 105)
+        self.setting_title2.move((back_label_ankor_w2 + back_label_buffer), (back_label_ankor_h2 + back_label_buffer + btnx_h + btnx_buffer_0 + confirm_op_h + btnx_buffer_0 + 1))
         self.setting_title2.setFont(self.font_s6b)
         self.setting_title2.setText("")
         self.setting_title2.setStyleSheet(self.default_qlbl_style)
@@ -468,7 +474,7 @@ class App(QMainWindow):
         # Sector 2: Title Lable Signifies Which Path Is Displayed To Be Configured 3
         self.setting_title3 = QLabel(self)
         self.setting_title3.resize(87, 14)
-        self.setting_title3.move((back_label_ankor_w3 + back_label_left_buffer), 105)
+        self.setting_title3.move((back_label_ankor_w3 + back_label_buffer), (back_label_ankor_h3 + back_label_buffer + btnx_h + btnx_buffer_0 + confirm_op_h + btnx_buffer_0 + 1))
         self.setting_title3.setFont(self.font_s6b)
         self.setting_title3.setText("")
         self.setting_title3.setStyleSheet(self.default_qlbl_style)
@@ -478,7 +484,7 @@ class App(QMainWindow):
         # Sector 2: Title Lable Signifies Which Path Is Displayed To Be Configured 4
         self.setting_title4 = QLabel(self)
         self.setting_title4.resize(87, 14)
-        self.setting_title4.move((back_label_ankor_w4 + back_label_left_buffer), 105)
+        self.setting_title4.move((back_label_ankor_w4 + back_label_buffer), (back_label_ankor_h4 + back_label_buffer + btnx_h + btnx_buffer_0 + confirm_op_h + btnx_buffer_0 + 1))
         self.setting_title4.setFont(self.font_s6b)
         self.setting_title4.setText("")
         self.setting_title4.setStyleSheet(self.default_qlbl_style)
@@ -488,7 +494,7 @@ class App(QMainWindow):
         # Sector 2: Title Lable Signifies Which Path Is Displayed To Be Configured 5
         self.setting_title5 = QLabel(self)
         self.setting_title5.resize(87, 14)
-        self.setting_title5.move((back_label_ankor_w5 + back_label_left_buffer), 105)
+        self.setting_title5.move((back_label_ankor_w5 + back_label_buffer), (back_label_ankor_h5 + back_label_buffer + btnx_h + btnx_buffer_0 + confirm_op_h + btnx_buffer_0 + 1))
         self.setting_title5.setFont(self.font_s6b)
         self.setting_title5.setText("")
         self.setting_title5.setStyleSheet(self.default_qlbl_style)
@@ -498,7 +504,7 @@ class App(QMainWindow):
         # Sector 1: Title Label QLine Edits Which Title Is Displayed 0
         self.setting_title_B_0 = QLineEdit(self)
         self.setting_title_B_0.resize(87, 14)
-        self.setting_title_B_0.move((back_label_ankor_w0 + back_label_left_buffer), 105)
+        self.setting_title_B_0.move((back_label_ankor_w0 + back_label_buffer), (back_label_ankor_h0 + back_label_buffer + btnx_h + btnx_buffer_0 + confirm_op_h + btnx_buffer_0 + 1))
         self.setting_title_B_0.setFont(self.font_s6b)
         self.setting_title_B_0.setText('')
         self.setting_title_B_0.setReadOnly(False)
@@ -509,7 +515,7 @@ class App(QMainWindow):
         # Sector 1: Title Label QLine Edits Which Title Is Displayed 0
         self.setting_title_B_1 = QLineEdit(self)
         self.setting_title_B_1.resize(87, 14)
-        self.setting_title_B_1.move((back_label_ankor_w1 + back_label_left_buffer), 105)
+        self.setting_title_B_1.move((back_label_ankor_w1 + back_label_buffer), (back_label_ankor_h1 + back_label_buffer + btnx_h + btnx_buffer_0 + confirm_op_h + btnx_buffer_0 + 1))
         self.setting_title_B_1.setFont(self.font_s6b)
         self.setting_title_B_1.setText('')
         self.setting_title_B_1.setReadOnly(False)
@@ -520,7 +526,7 @@ class App(QMainWindow):
         # Sector 1: Title Label QLine Edits Which Title Is Displayed 0
         self.setting_title_B_2 = QLineEdit(self)
         self.setting_title_B_2.resize(87, 14)
-        self.setting_title_B_2.move((back_label_ankor_w2 + back_label_left_buffer), 105)
+        self.setting_title_B_2.move((back_label_ankor_w2 + back_label_buffer), (back_label_ankor_h2 + back_label_buffer + btnx_h + btnx_buffer_0 + confirm_op_h + btnx_buffer_0 + 1))
         self.setting_title_B_2.setFont(self.font_s6b)
         self.setting_title_B_2.setText('')
         self.setting_title_B_2.setReadOnly(False)
@@ -531,7 +537,7 @@ class App(QMainWindow):
         # Sector 1: Title Label QLine Edits Which Title Is Displayed 0
         self.setting_title_B_3 = QLineEdit(self)
         self.setting_title_B_3.resize(87, 14)
-        self.setting_title_B_3.move((back_label_ankor_w3 + back_label_left_buffer), 105)
+        self.setting_title_B_3.move((back_label_ankor_w3 + back_label_buffer), (back_label_ankor_h3 + back_label_buffer + btnx_h + btnx_buffer_0 + confirm_op_h + btnx_buffer_0 + 1))
         self.setting_title_B_3.setFont(self.font_s6b)
         self.setting_title_B_3.setText('')
         self.setting_title_B_3.setReadOnly(False)
@@ -542,7 +548,7 @@ class App(QMainWindow):
         # Sector 1: Title Label QLine Edits Which Title Is Displayed 0
         self.setting_title_B_4 = QLineEdit(self)
         self.setting_title_B_4.resize(87, 14)
-        self.setting_title_B_4.move((back_label_ankor_w4 + back_label_left_buffer), 105)
+        self.setting_title_B_4.move((back_label_ankor_w4 + back_label_buffer), (back_label_ankor_h4 + back_label_buffer + btnx_h + btnx_buffer_0 + confirm_op_h + btnx_buffer_0 + 1))
         self.setting_title_B_4.setFont(self.font_s6b)
         self.setting_title_B_4.setText('')
         self.setting_title_B_4.setReadOnly(False)
@@ -553,7 +559,7 @@ class App(QMainWindow):
         # Sector 1: Title Label QLine Edits Which Title Is Displayed 0
         self.setting_title_B_5 = QLineEdit(self)
         self.setting_title_B_5.resize(87, 14)
-        self.setting_title_B_5.move((back_label_ankor_w5 + back_label_left_buffer), 105)
+        self.setting_title_B_5.move((back_label_ankor_w5 + back_label_buffer), (back_label_ankor_h5 + back_label_buffer + btnx_h + btnx_buffer_0 + confirm_op_h + btnx_buffer_0 + 1))
         self.setting_title_B_5.setFont(self.font_s6b)
         self.setting_title_B_5.setText('')
         self.setting_title_B_5.setReadOnly(False)
@@ -563,8 +569,8 @@ class App(QMainWindow):
         self.setting_title_B_var[5].hide()
         # Sector 2: Source Path Configuration Edit 0
         self.settings_source0 = QLineEdit(self)
-        self.settings_source0.move(set_src_dst_pos_w, 126)
-        self.settings_source0.resize(set_src_dst_w, 15)
+        self.settings_source0.move(user_paths_ankor_w, user_paths_ankor_h)
+        self.settings_source0.resize(source_dest_w, source_dest_h)
         self.settings_source0.setFont(self.font_s6b)
         self.settings_source0.setText(path_var[0])
         self.settings_source0.setReadOnly(True)
@@ -574,8 +580,8 @@ class App(QMainWindow):
         self.settings_source_edit_var[0].show()
         # Sector 2: Source Path Configuration Edit 1
         self.settings_source1 = QLineEdit(self)
-        self.settings_source1.move(set_src_dst_pos_w, 126)
-        self.settings_source1.resize(set_src_dst_w, 15)
+        self.settings_source1.move(user_paths_ankor_w, user_paths_ankor_h)
+        self.settings_source1.resize(source_dest_w, source_dest_h)
         self.settings_source1.setFont(self.font_s6b)
         self.settings_source1.setText(path_var[1])
         self.settings_source1.setReadOnly(True)
@@ -585,8 +591,8 @@ class App(QMainWindow):
         self.settings_source_edit_var[1].hide()
         # Sector 2: Source Path Configuration Edit 2
         self.settings_source2 = QLineEdit(self)
-        self.settings_source2.move(set_src_dst_pos_w, 126)
-        self.settings_source2.resize(set_src_dst_w, 15)
+        self.settings_source2.move(user_paths_ankor_w, user_paths_ankor_h)
+        self.settings_source2.resize(source_dest_w, source_dest_h)
         self.settings_source2.setFont(self.font_s6b)
         self.settings_source2.setText(path_var[2])
         self.settings_source2.setReadOnly(True)
@@ -596,8 +602,8 @@ class App(QMainWindow):
         self.settings_source_edit_var[2].hide()
         # Sector 2: Source Path Configuration Edit 3
         self.settings_source3 = QLineEdit(self)
-        self.settings_source3.move(set_src_dst_pos_w, 126)
-        self.settings_source3.resize(set_src_dst_w, 15)
+        self.settings_source3.move(user_paths_ankor_w, user_paths_ankor_h)
+        self.settings_source3.resize(source_dest_w, source_dest_h)
         self.settings_source3.setFont(self.font_s6b)
         self.settings_source3.setText(path_var[3])
         self.settings_source3.setReadOnly(True)
@@ -607,8 +613,8 @@ class App(QMainWindow):
         self.settings_source_edit_var[3].hide()
         # Sector 2: Source Path Configuration Edit 4
         self.settings_source4 = QLineEdit(self)
-        self.settings_source4.move(set_src_dst_pos_w, 126)
-        self.settings_source4.resize(set_src_dst_w, 15)
+        self.settings_source4.move(user_paths_ankor_w, user_paths_ankor_h)
+        self.settings_source4.resize(source_dest_w, source_dest_h)
         self.settings_source4.setFont(self.font_s6b)
         self.settings_source4.setText(path_var[4])
         self.settings_source4.setReadOnly(True)
@@ -618,8 +624,8 @@ class App(QMainWindow):
         self.settings_source_edit_var[4].hide()
         # Sector 2: Source Path Configuration Edit 5
         self.settings_source5 = QLineEdit(self)
-        self.settings_source5.move(set_src_dst_pos_w, 126)
-        self.settings_source5.resize(set_src_dst_w, 15)
+        self.settings_source5.move(user_paths_ankor_w, user_paths_ankor_h)
+        self.settings_source5.resize(source_dest_w, source_dest_h)
         self.settings_source5.setFont(self.font_s6b)
         self.settings_source5.setText(path_var[5])
         self.settings_source5.setReadOnly(True)
@@ -627,10 +633,10 @@ class App(QMainWindow):
         self.settings_source5.setStyleSheet(self.default_qle_style)
         self.settings_source_edit_var.append(self.settings_source5)
         self.settings_source_edit_var[5].hide()
-        # Sector 2: Destination Path Configuration Edit 0
+        # Sector 2: Destination Path Configuration Edit 0  source_dest_buffer_h
         self.settings_dest0 = QLineEdit(self)
-        self.settings_dest0.move(set_src_dst_pos_w, 145)
-        self.settings_dest0.resize(set_src_dst_w, 15)
+        self.settings_dest0.move(user_paths_ankor_w, user_paths_ankor_h + source_dest_h + source_dest_buffer_h)
+        self.settings_dest0.resize(source_dest_w, 15)
         self.settings_dest0.setFont(self.font_s6b)
         self.settings_dest0.setText(dest_path_var[0])
         self.settings_dest0.setReadOnly(True)
@@ -640,8 +646,8 @@ class App(QMainWindow):
         self.settings_dest_edit_var[0].show()
         # Sector 2: Destination Path Configuration Edit 1
         self.settings_dest1 = QLineEdit(self)
-        self.settings_dest1.move(set_src_dst_pos_w, 145)
-        self.settings_dest1.resize(set_src_dst_w, 15)
+        self.settings_dest1.move(user_paths_ankor_w, user_paths_ankor_h + source_dest_h + source_dest_buffer_h)
+        self.settings_dest1.resize(source_dest_w, 15)
         self.settings_dest1.setFont(self.font_s6b)
         self.settings_dest1.setText(dest_path_var[1])
         self.settings_dest1.setReadOnly(True)
@@ -651,8 +657,8 @@ class App(QMainWindow):
         self.settings_dest_edit_var[1].hide()
         # Sector 2: Destination Path Configuration Edit 2
         self.settings_dest2 = QLineEdit(self)
-        self.settings_dest2.move(set_src_dst_pos_w, 145)
-        self.settings_dest2.resize(set_src_dst_w, 15)
+        self.settings_dest2.move(user_paths_ankor_w, user_paths_ankor_h + source_dest_h + source_dest_buffer_h)
+        self.settings_dest2.resize(source_dest_w, 15)
         self.settings_dest2.setFont(self.font_s6b)
         self.settings_dest2.setText(dest_path_var[2])
         self.settings_dest2.setReadOnly(True)
@@ -662,8 +668,8 @@ class App(QMainWindow):
         self.settings_dest_edit_var[2].hide()
         # Sector 2: Destination Path Configuration Edit 3
         self.settings_dest3 = QLineEdit(self)
-        self.settings_dest3.move(set_src_dst_pos_w, 145)
-        self.settings_dest3.resize(set_src_dst_w, 15)
+        self.settings_dest3.move(user_paths_ankor_w, user_paths_ankor_h + source_dest_h + source_dest_buffer_h)
+        self.settings_dest3.resize(source_dest_w, 15)
         self.settings_dest3.setFont(self.font_s6b)
         self.settings_dest3.setText(dest_path_var[3])
         self.settings_dest3.setReadOnly(True)
@@ -673,8 +679,8 @@ class App(QMainWindow):
         self.settings_dest_edit_var[3].hide()
         # Sector 2: Destination Path Configuration Edit 4
         self.settings_dest4 = QLineEdit(self)
-        self.settings_dest4.move(set_src_dst_pos_w, 145)
-        self.settings_dest4.resize(set_src_dst_w, 15)
+        self.settings_dest4.move(user_paths_ankor_w, user_paths_ankor_h + source_dest_h + source_dest_buffer_h)
+        self.settings_dest4.resize(source_dest_w, 15)
         self.settings_dest4.setFont(self.font_s6b)
         self.settings_dest4.setText(dest_path_var[4])
         self.settings_dest4.setReadOnly(True)
@@ -684,8 +690,8 @@ class App(QMainWindow):
         self.settings_dest_edit_var[4].hide()
         # Sector 2: Destination Path Configuration Edit 5
         self.settings_dest5 = QLineEdit(self)
-        self.settings_dest5.move(set_src_dst_pos_w, 145)
-        self.settings_dest5.resize(set_src_dst_w, 15)
+        self.settings_dest5.move(user_paths_ankor_w, user_paths_ankor_h + source_dest_h + source_dest_buffer_h)
+        self.settings_dest5.resize(source_dest_w, 15)
         self.settings_dest5.setFont(self.font_s6b)
         self.settings_dest5.setText(dest_path_var[5])
         self.settings_dest5.setReadOnly(True)
@@ -695,21 +701,21 @@ class App(QMainWindow):
         self.settings_dest_edit_var[5].hide()
         # Sector 2: File Path Validation LED Source
         self.settings_input_response_label_src = QLabel(self)
-        self.settings_input_response_label_src.move((set_src_dst_pos_w + set_src_dst_w + 5), 126)
+        self.settings_input_response_label_src.move((user_paths_ankor_w + source_dest_w + 5), user_paths_ankor_h)
         self.settings_input_response_label_src.resize(5, 15)
         self.settings_input_response_label_src.setStyleSheet(self.default_valid_path_led)
         # Sector 2: File Path Validation LED Destination
         self.settings_input_response_label_dst = QLabel(self)
-        self.settings_input_response_label_dst.move((set_src_dst_pos_w + set_src_dst_w + 5), 145)
+        self.settings_input_response_label_dst.move((user_paths_ankor_w + source_dest_w + 5), user_paths_ankor_h + source_dest_h + source_dest_buffer_h)
         self.settings_input_response_label_dst.resize(5, 15)
         self.settings_input_response_label_dst.setStyleSheet(self.default_valid_path_led)
-         # Sector 1: Main Function Confirmation 0
+         # Sector 1: Main Function Confirmation 0        back_label_buffer  btnx_w  btnx_h  btnx_buffer_0  confirm_op_w  confirm_op_h
         self.confirm_op0_tru = QPushButton(self)
         self.confirm_op0_tru.resize(87, 13)
         self.confirm_op0_tru.setIcon(QIcon(self.img_execute_false))
         self.confirm_op0_tru.setIconSize(QSize(45, 10))
         self.confirm_op0_tru.setStyleSheet(self.default_qpbtn_style)
-        self.confirm_op0_tru.move((back_label_ankor_w0 + back_label_left_buffer), (back_label_ankor_h0 + 63))
+        self.confirm_op0_tru.move((back_label_ankor_w0 + back_label_buffer), (back_label_ankor_h0 + back_label_buffer + btnx_h + btnx_buffer_0))
         self.confirm_op0_tru.clicked.connect(self.confirm_op0_funk0)
         self.confirm_op0_tru.setEnabled(False)
         self.confirm_op0_tru.show()
@@ -720,7 +726,7 @@ class App(QMainWindow):
         self.confirm_op1_tru.setIcon(QIcon(self.img_execute_false))
         self.confirm_op1_tru.setIconSize(QSize(45, 10))
         self.confirm_op1_tru.setStyleSheet(self.default_qpbtn_style)
-        self.confirm_op1_tru.move((back_label_ankor_w1 + back_label_left_buffer), (back_label_ankor_h1 + 63))
+        self.confirm_op1_tru.move((back_label_ankor_w1 + back_label_buffer), (back_label_ankor_h1 + back_label_buffer + btnx_h + btnx_buffer_0))
         self.confirm_op1_tru.clicked.connect(self.confirm_op1_funk0)
         self.confirm_op1_tru.setEnabled(False)
         self.confirm_op1_tru.show()
@@ -731,7 +737,7 @@ class App(QMainWindow):
         self.confirm_op2_tru.setIcon(QIcon(self.img_execute_false))
         self.confirm_op2_tru.setIconSize(QSize(45, 10))
         self.confirm_op2_tru.setStyleSheet(self.default_qpbtn_style)
-        self.confirm_op2_tru.move((back_label_ankor_w2 + back_label_left_buffer), (back_label_ankor_h2 + 63))
+        self.confirm_op2_tru.move((back_label_ankor_w2 + back_label_buffer), (back_label_ankor_h2 + back_label_buffer + btnx_h + btnx_buffer_0))
         self.confirm_op2_tru.clicked.connect(self.confirm_op2_funk0)
         self.confirm_op2_tru.setEnabled(False)
         self.confirm_op2_tru.show()
@@ -742,7 +748,7 @@ class App(QMainWindow):
         self.confirm_op3_tru.setIcon(QIcon(self.img_execute_false))
         self.confirm_op3_tru.setIconSize(QSize(45, 10))
         self.confirm_op3_tru.setStyleSheet(self.default_qpbtn_style)
-        self.confirm_op3_tru.move((back_label_ankor_w3 + back_label_left_buffer), (back_label_ankor_h3 + 63))
+        self.confirm_op3_tru.move((back_label_ankor_w3 + back_label_buffer), (back_label_ankor_h3 + back_label_buffer + btnx_h + btnx_buffer_0))
         self.confirm_op3_tru.clicked.connect(self.confirm_op3_funk0)
         self.confirm_op3_tru.setEnabled(False)
         self.confirm_op3_tru.show()
@@ -753,7 +759,7 @@ class App(QMainWindow):
         self.confirm_op4_tru.setIcon(QIcon(self.img_execute_false))
         self.confirm_op4_tru.setIconSize(QSize(45, 10))
         self.confirm_op4_tru.setStyleSheet(self.default_qpbtn_style)
-        self.confirm_op4_tru.move((back_label_ankor_w4 + back_label_left_buffer), (back_label_ankor_h4 + 63))
+        self.confirm_op4_tru.move((back_label_ankor_w4 + back_label_buffer), (back_label_ankor_h4 + back_label_buffer + btnx_h + btnx_buffer_0))
         self.confirm_op4_tru.clicked.connect(self.confirm_op4_funk0)
         self.confirm_op4_tru.setEnabled(False)
         self.confirm_op4_tru.show()
@@ -764,16 +770,11 @@ class App(QMainWindow):
         self.confirm_op5_tru.setIcon(QIcon(self.img_execute_false))
         self.confirm_op5_tru.setIconSize(QSize(45, 10))
         self.confirm_op5_tru.setStyleSheet(self.default_qpbtn_style)
-        self.confirm_op5_tru.move((back_label_ankor_w5 + back_label_left_buffer), (back_label_ankor_h5 + 63))
+        self.confirm_op5_tru.move((back_label_ankor_w5 + back_label_buffer), (back_label_ankor_h5 + back_label_buffer + btnx_h + btnx_buffer_0))
         self.confirm_op5_tru.clicked.connect(self.confirm_op5_funk0)
         self.confirm_op5_tru.setEnabled(False)
         self.confirm_op5_tru.show()
         self.confirm_op_var.append(self.confirm_op5_tru)
-        # Sector 3: Output Text Browser Dimensions
-        self.tb_w = self.width - 10
-        self.tb_h = 115
-        self.tb_pos_w = 5
-        self.tb_pos_h = 182
         # Sector 3: Output Text Browser Label 0
         self.tb_label_0 = QLabel(self)
         self.tb_label_0.move(5, (self.tb_pos_h - 14))
@@ -849,12 +850,12 @@ class App(QMainWindow):
         self.tb_var.append(self.tb_5)
         self.tb_var[5].hide()
         # Sector 1: Attatch Main Function Buttons To Background Tiles Position
-        self.btnx_main_0.move((back_label_ankor_w0 + back_label_left_buffer), (back_label_ankor_h0 + 5))
-        self.btnx_main_1.move((back_label_ankor_w1 + back_label_left_buffer), (back_label_ankor_h1 + 5))
-        self.btnx_main_2.move((back_label_ankor_w2 + back_label_left_buffer), (back_label_ankor_h2 + 5))
-        self.btnx_main_3.move((back_label_ankor_w3 + back_label_left_buffer), (back_label_ankor_h3 + 5))
-        self.btnx_main_4.move((back_label_ankor_w4 + back_label_left_buffer), (back_label_ankor_h4 + 5))
-        self.btnx_main_5.move((back_label_ankor_w5 + back_label_left_buffer), (back_label_ankor_h5 + 5))
+        self.btnx_main_0.move((back_label_ankor_w0 + back_label_buffer), (back_label_ankor_h0 + 5))
+        self.btnx_main_1.move((back_label_ankor_w1 + back_label_buffer), (back_label_ankor_h1 + 5))
+        self.btnx_main_2.move((back_label_ankor_w2 + back_label_buffer), (back_label_ankor_h2 + 5))
+        self.btnx_main_3.move((back_label_ankor_w3 + back_label_buffer), (back_label_ankor_h3 + 5))
+        self.btnx_main_4.move((back_label_ankor_w4 + back_label_buffer), (back_label_ankor_h4 + 5))
+        self.btnx_main_5.move((back_label_ankor_w5 + back_label_buffer), (back_label_ankor_h5 + 5))
         # Sector 1: Attatch Drop Down Settings Buttons To Background Tiles Position
         self.btnx_settings_0.move((back_label_ankor_w0 + 63), (back_label_ankor_h0 + 49))
         self.btnx_settings_1.move((back_label_ankor_w1 + 63), (back_label_ankor_h1 + 49))
@@ -1787,6 +1788,7 @@ class App(QMainWindow):
         self.tb_label_0.setStyleSheet(self.default_qlbl_highlight)
         self.paths_readonly_btn_var[settings_active_int].setStyleSheet(self.default_qpb_highlight)
 
+        self.tb_label_0.setText(name_tile[settings_active_int] + ' Output')
         self.paths_readonly_btn_var[settings_active_int].setIconSize(QSize(8, 8))
         self.paths_readonly_btn_var[settings_active_int].setIcon(QIcon(self.img_read_ony_true))
 
@@ -1903,6 +1905,7 @@ class App(QMainWindow):
         self.tb_label_0.setStyleSheet(self.default_qlbl_highlight)
         self.paths_readonly_btn_var[settings_active_int].setStyleSheet(self.default_qpb_highlight)
 
+        self.tb_label_0.setText(name_tile[settings_active_int] + ' Output')
         self.btnx_settings_var[settings_active_int].setIcon(QIcon(self.img_show_menu_true))
         self.paths_readonly_btn_var[settings_active_int].setIconSize(QSize(8, 8))
         self.paths_readonly_btn_var[settings_active_int].setIcon(QIcon(self.img_read_ony_true))
