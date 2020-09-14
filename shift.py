@@ -55,7 +55,6 @@ settings_input_response_dest_bool = None
 settings_input_response_source_bool = None
 compare_bool_var = [False, False, False, False, False, False]
 thread_engaged_var = [False, False, False, False, False, False]
-thread_initialized_var = [False, False, False, False, False, False]
 valid_len_bool = False
 valid_drive_bool = False
 valid_char_bool = False
@@ -128,6 +127,7 @@ class App(QMainWindow):
         self.setFixedSize(self.width, self.height)
         self.output_verbosity = 1
         self.btnx_main_var = []
+        #self.btnx_settings_var = []
         self.btnx_mode_btn_var = []
         self.stop_thread_btn_var = []
         self.paths_readonly_btn_var = []
@@ -211,15 +211,6 @@ class App(QMainWindow):
         self.minimize_button.setIconSize(QSize(50, 20))
         self.minimize_button.clicked.connect(self.showMinimized)
         self.minimize_button.setStyleSheet(self.default_title_qpb_style)
-        # Manual Refresh From Configuration File
-        self.refresh_btn = QPushButton(self)
-        self.refresh_btn.move(20, 0)
-        self.refresh_btn.resize(20, 20)
-        self.refresh_btn.setIcon(QIcon("./icon.png"))
-        self.refresh_btn.setIconSize(QSize(12, 12))
-        self.refresh_btn.clicked.connect(self.refresh_btn_funk)
-        self.refresh_btn.setStyleSheet(self.default_title_qpb_style)
-        self.refresh_btn.hide()
         # Tiltle Bar: Configuration Profile 0
         self.cnfg_prof_btn_0 = QPushButton(self)
         self.cnfg_prof_btn_0.move(cnfg_prof_btn_pw, cnfg_prof_btn_ph)
@@ -912,6 +903,9 @@ class App(QMainWindow):
         self.event_thread.start()
         scaling_thread = ScalingClass(self.setGeometry, self.width, self.height, self.pos)
         scaling_thread.start()
+        # Thread: Checks The Validity Of Directory Paths Set In Sector 2 As Source & Destination And Updates GUI Accordingly
+        self.update_settings_window_thread = UpdateSettingsWindow(self.settings_source_edit_var, self.settings_dest_edit_var, self.settings_title_var, self.tb_label_0)
+        self.update_settings_window_thread.start()
         # Thread: Main Function Thread - Read/Write Thread 0
         self.thread_0 = ThreadClass0(self.tb_0,
                                      self.confirm_op0_tru,
@@ -926,8 +920,7 @@ class App(QMainWindow):
                                      self.btnx_main_0,
                                      self.stop_thread_btn_0,
                                      self.paths_readonly_btn_0,
-                                     self.cnfg_prof_btn_var,
-                                     self.paths_readonly_btn_var)
+                                     self.cnfg_prof_btn_var)
         # Thread: Main Function Thread - Read/Write Thread 1
         self.thread_1 = ThreadClass1(self.tb_1,
                                      self.confirm_op1_tru,
@@ -942,8 +935,7 @@ class App(QMainWindow):
                                      self.btnx_main_1,
                                      self.stop_thread_btn_1,
                                      self.paths_readonly_btn_1,
-                                     self.cnfg_prof_btn_var,
-                                     self.paths_readonly_btn_var)
+                                     self.cnfg_prof_btn_var)
         # Thread: Main Function Thread - Read/Write Thread 2
         self.thread_2 = ThreadClass2(self.tb_2,
                                      self.confirm_op2_tru,
@@ -958,8 +950,7 @@ class App(QMainWindow):
                                      self.btnx_main_2,
                                      self.stop_thread_btn_2,
                                      self.paths_readonly_btn_2,
-                                     self.cnfg_prof_btn_var,
-                                     self.paths_readonly_btn_var)
+                                     self.cnfg_prof_btn_var)
         # Thread: Main Function Thread - Read/Write Thread 3
         self.thread_3 = ThreadClass3(self.tb_3,
                                      self.confirm_op3_tru,
@@ -974,8 +965,7 @@ class App(QMainWindow):
                                      self.btnx_main_3,
                                      self.stop_thread_btn_3,
                                      self.paths_readonly_btn_3,
-                                     self.cnfg_prof_btn_var,
-                                     self.paths_readonly_btn_var)
+                                     self.cnfg_prof_btn_var)
         # Thread: Main Function Thread - Read/Write Thread 4
         self.thread_4 = ThreadClass4(self.tb_4,
                                      self.confirm_op4_tru,
@@ -990,8 +980,7 @@ class App(QMainWindow):
                                      self.btnx_main_4,
                                      self.stop_thread_btn_4,
                                      self.paths_readonly_btn_4,
-                                     self.cnfg_prof_btn_var,
-                                     self.paths_readonly_btn_var)
+                                     self.cnfg_prof_btn_var)
         # Thread: Main Function Thread - Read/Write Thread 5
         self.thread_5 = ThreadClass5(self.tb_5,
                                      self.confirm_op5_tru,
@@ -1006,26 +995,13 @@ class App(QMainWindow):
                                      self.btnx_main_5,
                                      self.stop_thread_btn_5,
                                      self.paths_readonly_btn_5,
-                                     self.cnfg_prof_btn_var,
-                                     self.paths_readonly_btn_var)
+                                     self.cnfg_prof_btn_var)
         # Thread: LEDs In Sector 2 Indicate Source & Destination Path Validity
         self.settings_input_response_thread = SettingsInputResponse(self.default_valid_path_led_green,
                                                                self.default_valid_path_led_red,
                                                                self.default_valid_path_led,
                                                                self.settings_input_response_label_src,
                                                                self.settings_input_response_label_dst)
-        # Thread: Checks The Validity Of Directory Paths Set In Sector 2 As Source & Destination And Updates GUI Accordingly
-        self.update_settings_window_thread = UpdateSettingsWindow(self.settings_source_edit_var,
-                                                                  self.settings_dest_edit_var,
-                                                                  self.settings_title_var,
-                                                                  self.tb_label_0,
-                                                                  self.thread_0,
-                                                                  self.thread_1,
-                                                                  self.thread_2,
-                                                                  self.thread_3,
-                                                                  self.thread_4,
-                                                                  self.thread_5)
-        self.update_settings_window_thread.start()
         # Plugged In & Threaded: Display The Application
         self.show()
     # Funtion: Centering Windows
@@ -1311,48 +1287,6 @@ class App(QMainWindow):
 
     def title_logo_btn_funk(self):
         print('-- plugged in: title_logo_btn_funk')
-
-    def refresh_btn_funk(self):
-        print('-- plugged in: refresh button')
-        self.all_readonly()
-        self.update_settings_window_thread.start()
-
-    def all_readonly(self):
-        self.settings_source_edit_var[0].setReadOnly(True)
-        self.settings_source_edit_var[1].setReadOnly(True)
-        self.settings_source_edit_var[2].setReadOnly(True)
-        self.settings_source_edit_var[3].setReadOnly(True)
-        self.settings_source_edit_var[4].setReadOnly(True)
-        self.settings_source_edit_var[5].setReadOnly(True)
-
-        self.settings_dest_edit_var[0].setReadOnly(True)
-        self.settings_dest_edit_var[1].setReadOnly(True)
-        self.settings_dest_edit_var[2].setReadOnly(True)
-        self.settings_dest_edit_var[3].setReadOnly(True)
-        self.settings_dest_edit_var[4].setReadOnly(True)
-        self.settings_dest_edit_var[5].setReadOnly(True)
-
-        self.paths_readonly_btn_0.setIcon(QIcon(self.img_read_ony_true))
-        self.paths_readonly_btn_1.setIcon(QIcon(self.img_read_ony_true))
-        self.paths_readonly_btn_2.setIcon(QIcon(self.img_read_ony_true))
-        self.paths_readonly_btn_3.setIcon(QIcon(self.img_read_ony_true))
-        self.paths_readonly_btn_4.setIcon(QIcon(self.img_read_ony_true))
-        self.paths_readonly_btn_5.setIcon(QIcon(self.img_read_ony_true))
-        self.paths_readonly_btn_0.setIconSize(QSize(8, 8))
-        self.paths_readonly_btn_1.setIconSize(QSize(8, 8))
-        self.paths_readonly_btn_2.setIconSize(QSize(8, 8))
-        self.paths_readonly_btn_3.setIconSize(QSize(8, 8))
-        self.paths_readonly_btn_4.setIconSize(QSize(8, 8))
-        self.paths_readonly_btn_5.setIconSize(QSize(8, 8))
-
-        self.setting_title_B_var[0].hide()
-        self.setting_title_B_var[1].hide()
-        self.setting_title_B_var[2].hide()
-        self.setting_title_B_var[3].hide()
-        self.setting_title_B_var[4].hide()
-        self.setting_title_B_var[5].hide()
-
-        self.show_settings_title()
 
     # self.cnfg_prof_btn_2.setStyleSheet(self.default_title_config_prof_qpbtn_style)
     def cnfg_prof_btn_style_funk_0(self):
@@ -1853,9 +1787,23 @@ class App(QMainWindow):
 
         self.settings_source_edit_var[settings_active_int].setReadOnly(True)
         self.settings_dest_edit_var[settings_active_int].setReadOnly(True)
-        self.paths_readonly_btn_var[settings_active_int].setEnabled(True)
+        self.paths_readonly_btn_var[settings_active_int].setEnabled(False)
 
         settings_active_int_prev = settings_active_int
+
+    def readonly_funk_0(self):
+        self.paths_readonly_btn_0.setIcon(QIcon(self.img_read_ony_false))
+        self.paths_readonly_btn_1.setIcon(QIcon(self.img_read_ony_false))
+        self.paths_readonly_btn_2.setIcon(QIcon(self.img_read_ony_false))
+        self.paths_readonly_btn_3.setIcon(QIcon(self.img_read_ony_false))
+        self.paths_readonly_btn_4.setIcon(QIcon(self.img_read_ony_false))
+        self.paths_readonly_btn_5.setIcon(QIcon(self.img_read_ony_false))
+        self.paths_readonly_btn_0.setIconSize(QSize(8, 8))
+        self.paths_readonly_btn_1.setIconSize(QSize(8, 8))
+        self.paths_readonly_btn_2.setIconSize(QSize(8, 8))
+        self.paths_readonly_btn_3.setIconSize(QSize(8, 8))
+        self.paths_readonly_btn_4.setIconSize(QSize(8, 8))
+        self.paths_readonly_btn_5.setIconSize(QSize(8, 8))
 
     def highlight_off_0(self):
         self.btnx_main_var[0].setStyleSheet(self.default_btnx_main_style)
@@ -2167,32 +2115,25 @@ class SettingsInputResponse(QThread):
 
 # Update Sector 2 Settings Window: Sources & Destination Paths Displayed Only When Last Valid Path Entered Still Actually Exists
 class UpdateSettingsWindow(QThread):
-    def __init__(self, settings_source_edit_var, settings_dest_edit_var, settings_title_var, tb_label_0, thread_0, thread_1, thread_2, thread_3, thread_4, thread_5):
+    def __init__(self, settings_source_edit_var, settings_dest_edit_var, settings_title_var, tb_label_0):
         QThread.__init__(self)
         self.settings_source_edit_var = settings_source_edit_var
         self.settings_dest_edit_var = settings_dest_edit_var
         self.settings_title_var = settings_title_var
         self.tb_label_0 = tb_label_0
-        self.thread_0 = thread_0
-        self.thread_1 = thread_1
-        self.thread_2 = thread_2
-        self.thread_3 = thread_3
-        self.thread_4 = thread_4
-        self.thread_5 = thread_5
-        self.local_thread_var = [self.thread_0, self.thread_1, self.thread_2, self.thread_3, self.thread_4, self.thread_5]
 
     # Run This Thread While Program Is Alive And Read Configuration File
     def run(self):
         global debug_enabled
         print('-- plugged in: UpdateSettingsWindow')
         self.get_conf_funk()
-        while __name__ == '__main__':
-            self.get_conf_funk()
-            time.sleep(1)
+        #while __name__ == '__main__':
+        #    self.get_conf_funk()
+        #    time.sleep(1)
 
     # While Source And Destination Path Configuration Edit ReadOnly, Check Configured Paths Existance And Set Boolean Accordingly
     def get_conf_funk(self):
-        global debug_enabled, path_var, dest_path_var, name_tile, configuration_engaged, cfg_f, img_path, thread_engaged_var
+        global debug_enabled, path_var, dest_path_var, name_tile, configuration_engaged, cfg_f, img_path
         configuration_engaged = True
         # Only Update Displayed Source & Destination Paths If Source & Destination Paths Not Being Edited
         check_var = []
@@ -2204,6 +2145,7 @@ class UpdateSettingsWindow(QThread):
                 check_var.append(True)
             i += 1
         if not False in check_var:
+            print('-- reading configuration')
             name_max_chars = 16
             name_tile = []
             path_var = []
@@ -2329,33 +2271,19 @@ class UpdateSettingsWindow(QThread):
                 fo.close()
                 i = 0
                 for self.settings_source_edit_vars in self.settings_source_edit_var:
-                    if path_var[i] != self.settings_source_edit_var[i].text() and thread_engaged_var[i] is False:
+                    if path_var[i] != self.settings_source_edit_var[i]:
                         self.settings_source_edit_var[i].setText(path_var[i])
-                    elif path_var[i] != self.settings_source_edit_var[i].text()  and thread_engaged_var[i] is True:
-                        print(path_var[i], self.settings_source_edit_var[i].text())
-                        if thread_initialized_var[i] is True:
-                            #print('-- thread', i, 'in initialized state: terminating')
-                            self.local_thread_var[i].stop_thr()
                     i += 1
                 i = 0
                 for self.settings_dest_edit_vars in self.settings_dest_edit_var:
-                    if dest_path_var[i] != self.settings_dest_edit_var[i].text()  and thread_engaged_var[i] is False:
+                    if dest_path_var[i] != self.settings_dest_edit_var[i]:
                         self.settings_dest_edit_var[i].setText(dest_path_var[i])
-                    elif dest_path_var[i] != self.settings_dest_edit_var[i].text()  and thread_engaged_var[i] is True:
-                        print(dest_path_var[i], self.settings_dest_edit_var[i].text())
-                        if thread_initialized_var[i] is True:
-                            #print('-- thread', i, 'in initialized state: terminating')
-                            self.local_thread_var[i].stop_thr()
                     i += 1
                 i = 0
                 for self.settings_title_vars in self.settings_title_var:
-                    if name_tile[i] != self.settings_title_var[i].text() and thread_engaged_var[i] is False:
+                    if name_tile[i] != self.settings_title_var[i]:
+                        #self.settings_title_var[i].setAlignment(Qt.AlignCenter)
                         self.settings_title_var[i].setText(name_tile[i])
-                    elif name_tile[i] != self.settings_title_var[i].text() and thread_engaged_var[i] is True:
-                        print(name_tile[i], self.settings_title_var[i].text())
-                        if thread_initialized_var[i] is True:
-                            #print('-- thread', i, 'in initialized state: terminating')
-                            self.local_thread_var[i].stop_thr()
                     i += 1
                 self.tb_label_0.setText(name_tile[settings_active_int] + ' Output')
             # Write A New Configuration File If Missing
@@ -2419,7 +2347,7 @@ class EventMonitorScrollClass(QThread):
 
 class ThreadClass0(QThread):
     def __init__(self, tb_0, confirm_op0_tru, img_btnx_led_0, img_btnx_led_1, img_btnx_led_2, img_execute_false, img_execute_true, img_stop_thread_false, img_stop_thread_true,
-                 output_verbosity, btnx_main_0, stop_thread_btn_0, paths_readonly_btn_0, cnfg_prof_btn_var, paths_readonly_btn_var):
+                 output_verbosity, btnx_main_0, stop_thread_btn_0, paths_readonly_btn_0, cnfg_prof_btn_var):
         QThread.__init__(self)
         self.cnfg_prof_btn_var = cnfg_prof_btn_var
         self.tb_0 = tb_0
@@ -2442,7 +2370,6 @@ class ThreadClass0(QThread):
         self.path_0 = ''
         self.path_1 = ''
         self.write_call = ()
-        self.paths_readonly_btn_var = paths_readonly_btn_var
 
     def write_funk(self):
         global debug_enabled, path_var, dest_path_var, configuration_engaged, confirm_op0_wait, confirm_op0_bool, thread_engaged_var
@@ -2512,11 +2439,6 @@ class ThreadClass0(QThread):
         # If Source & Destination Configuration Is Disengaged Then Continue
         if configuration_engaged is False:
             thread_engaged_var[0] = True
-            thread_initialized_var[0] = True
-            # Set Paths In Stone Before Continuing. Asigns Source & Destination Variables To New Variables That Cannot Be Changed Once Function Exectutes
-            local_path = path_var[0]
-            dest = dest_path_var[0]
-            compare_bool = compare_bool_var[0]
             self.cnfg_prof_btn_var[0].setEnabled(False)
             self.cnfg_prof_btn_var[1].setEnabled(False)
             self.cnfg_prof_btn_var[2].setEnabled(False)
@@ -2527,7 +2449,10 @@ class ThreadClass0(QThread):
             self.cnfg_prof_btn_var[7].setEnabled(False)
             self.cnfg_prof_btn_var[8].setEnabled(False)
             self.cnfg_prof_btn_var[9].setEnabled(False)
-            self.paths_readonly_btn_var[0].setEnabled(False)
+            # Set Paths In Stone Before Continuing. Asigns Source & Destination Variables To New Variables That Cannot Be Changed Once Function Exectutes
+            local_path = path_var[0]
+            dest = dest_path_var[0]
+            compare_bool = compare_bool_var[0]
             # Provide Confirmation/Declination Buttons & Wait For Confirmation/Declination Then Reset Global confirm_op0_wait Boolean Back to True
             self.btnx_main_0.setIcon(QIcon(self.img_btnx_led_1))
             self.confirm_op0_tru.setIcon(QIcon(self.img_execute_true))
@@ -2537,7 +2462,6 @@ class ThreadClass0(QThread):
             self.stop_thread_btn_0.setIcon(QIcon(self.img_stop_thread_true))
             while confirm_op0_wait is True:
                 time.sleep(0.3)
-            thread_initialized_var[0] = False
             confirm_op0_wait = True
             # Confirmation/Declination Occured, Hide Confirmation/Declination Buttons
             self.confirm_op0_tru.setIcon(QIcon(self.img_execute_false))
@@ -2569,8 +2493,8 @@ class ThreadClass0(QThread):
                                     self.write_funk()
                                     self.write_call = 1
                                     self.check_write()
-        self.summary()
-        self.disengage()
+                self.summary()
+                self.disengage()
 
     def summary(self):
         cp0_count_str = str(self.cp0_count)
@@ -2609,7 +2533,6 @@ class ThreadClass0(QThread):
         self.cnfg_prof_btn_var[7].setEnabled(True)
         self.cnfg_prof_btn_var[8].setEnabled(True)
         self.cnfg_prof_btn_var[9].setEnabled(True)
-        self.paths_readonly_btn_var[0].setEnabled(True)
         thread_engaged_var[0] = False
         confirm_op0_bool = False
         confirm_op0_wait = True
@@ -2629,7 +2552,7 @@ class ThreadClass0(QThread):
 
 class ThreadClass1(QThread):
     def __init__(self, tb_1, confirm_op1_tru, img_btnx_led_0, img_btnx_led_1, img_btnx_led_2, img_execute_false, img_execute_true, img_stop_thread_false, img_stop_thread_true,
-                 output_verbosity, btnx_main_1, stop_thread_btn_1, paths_readonly_btn_1, cnfg_prof_btn_var, paths_readonly_btn_var):
+                 output_verbosity, btnx_main_1, stop_thread_btn_1, paths_readonly_btn_1, cnfg_prof_btn_var):
         QThread.__init__(self)
         self.cnfg_prof_btn_var = cnfg_prof_btn_var
         self.tb_1 = tb_1
@@ -2652,7 +2575,6 @@ class ThreadClass1(QThread):
         self.path_0 = ''
         self.path_1 = ''
         self.write_call = ()
-        self.paths_readonly_btn_var = paths_readonly_btn_var
 
     def write_funk(self):
         global debug_enabled, path_var, dest_path_var, configuration_engaged, confirm_op0_wait, confirm_op0_bool, thread_engaged_var
@@ -2721,10 +2643,6 @@ class ThreadClass1(QThread):
         global debug_enabled, path_var, dest_path_var, configuration_engaged, confirm_op1_wait, confirm_op1_bool, thread_engaged_var
         if configuration_engaged is False:
             thread_engaged_var[1] = True
-            thread_initialized_var[1] = True
-            local_path = path_var[1]
-            dest = dest_path_var[1]
-            compare_bool = compare_bool_var[1]
             self.cnfg_prof_btn_var[0].setEnabled(False)
             self.cnfg_prof_btn_var[1].setEnabled(False)
             self.cnfg_prof_btn_var[2].setEnabled(False)
@@ -2735,7 +2653,9 @@ class ThreadClass1(QThread):
             self.cnfg_prof_btn_var[7].setEnabled(False)
             self.cnfg_prof_btn_var[8].setEnabled(False)
             self.cnfg_prof_btn_var[9].setEnabled(False)
-            self.paths_readonly_btn_var[1].setEnabled(False)
+            local_path = path_var[1]
+            dest = dest_path_var[1]
+            compare_bool = compare_bool_var[1]
             self.btnx_main_1.setIcon(QIcon(self.img_btnx_led_1))
             self.confirm_op1_tru.setIcon(QIcon(self.img_execute_true))
             self.confirm_op1_tru.setEnabled(True)
@@ -2743,7 +2663,6 @@ class ThreadClass1(QThread):
             self.stop_thread_btn_1.setIcon(QIcon(self.img_stop_thread_true))
             while confirm_op1_wait is True:
                 time.sleep(0.3)
-            thread_initialized_var[1] = False
             confirm_op1_wait = True
             self.confirm_op1_tru.setIcon(QIcon(self.img_execute_false))
             self.confirm_op1_tru.setEnabled(False)
@@ -2811,7 +2730,6 @@ class ThreadClass1(QThread):
         self.cnfg_prof_btn_var[7].setEnabled(True)
         self.cnfg_prof_btn_var[8].setEnabled(True)
         self.cnfg_prof_btn_var[9].setEnabled(True)
-        self.paths_readonly_btn_var[1].setEnabled(True)
         thread_engaged_var[1] = False
         confirm_op1_bool = False
         confirm_op1_wait = True
@@ -2831,7 +2749,7 @@ class ThreadClass1(QThread):
 
 class ThreadClass2(QThread):
     def __init__(self, tb_2, confirm_op2_tru, img_btnx_led_0, img_btnx_led_1, img_btnx_led_2, img_execute_false, img_execute_true, img_stop_thread_false, img_stop_thread_true,
-                 output_verbosity, btnx_main_2, stop_thread_btn_2, paths_readonly_btn_2, cnfg_prof_btn_var, paths_readonly_btn_var):
+                 output_verbosity, btnx_main_2, stop_thread_btn_2, paths_readonly_btn_2, cnfg_prof_btn_var):
         QThread.__init__(self)
         self.cnfg_prof_btn_var = cnfg_prof_btn_var
         self.tb_2 = tb_2
@@ -2854,7 +2772,6 @@ class ThreadClass2(QThread):
         self.path_0 = ''
         self.path_1 = ''
         self.write_call = ()
-        self.paths_readonly_btn_var = paths_readonly_btn_var
 
     def write_funk(self):
         global debug_enabled, path_var, dest_path_var, configuration_engaged, confirm_op0_wait, confirm_op0_bool, thread_engaged_var
@@ -2923,10 +2840,6 @@ class ThreadClass2(QThread):
         global debug_enabled, path_var, dest_path_var, configuration_engaged, confirm_op2_wait, confirm_op2_bool, thread_engaged_var
         if configuration_engaged is False:
             thread_engaged_var[2] = True
-            thread_initialized_var[2] = True
-            local_path = path_var[2]
-            dest = dest_path_var[2]
-            compare_bool = compare_bool_var[2]
             self.cnfg_prof_btn_var[0].setEnabled(False)
             self.cnfg_prof_btn_var[1].setEnabled(False)
             self.cnfg_prof_btn_var[2].setEnabled(False)
@@ -2937,7 +2850,9 @@ class ThreadClass2(QThread):
             self.cnfg_prof_btn_var[7].setEnabled(False)
             self.cnfg_prof_btn_var[8].setEnabled(False)
             self.cnfg_prof_btn_var[9].setEnabled(False)
-            self.paths_readonly_btn_var[2].setEnabled(False)
+            local_path = path_var[2]
+            dest = dest_path_var[2]
+            compare_bool = compare_bool_var[2]
             self.btnx_main_2.setIcon(QIcon(self.img_btnx_led_1))
             self.confirm_op2_tru.setIcon(QIcon(self.img_execute_true))
             self.confirm_op2_tru.setEnabled(True)
@@ -2945,7 +2860,6 @@ class ThreadClass2(QThread):
             self.stop_thread_btn_2.setIcon(QIcon(self.img_stop_thread_true))
             while confirm_op2_wait is True:
                 time.sleep(0.3)
-            thread_initialized_var[2] = False
             confirm_op2_wait = True
             self.confirm_op2_tru.setIcon(QIcon(self.img_execute_false))
             self.confirm_op2_tru.setEnabled(False)
@@ -3013,7 +2927,6 @@ class ThreadClass2(QThread):
         self.cnfg_prof_btn_var[7].setEnabled(True)
         self.cnfg_prof_btn_var[8].setEnabled(True)
         self.cnfg_prof_btn_var[9].setEnabled(True)
-        self.paths_readonly_btn_var[0].setEnabled(True)
         thread_engaged_var[2] = False
         confirm_op2_bool = False
         confirm_op2_wait = True
@@ -3033,7 +2946,7 @@ class ThreadClass2(QThread):
 
 class ThreadClass3(QThread):
     def __init__(self, tb_3, confirm_op3_tru, img_btnx_led_0, img_btnx_led_1, img_btnx_led_2, img_execute_false, img_execute_true, img_stop_thread_false, img_stop_thread_true,
-                 output_verbosity, btnx_main_3, stop_thread_btn_3, paths_readonly_btn_3, cnfg_prof_btn_var, paths_readonly_btn_var):
+                 output_verbosity, btnx_main_3, stop_thread_btn_3, paths_readonly_btn_3, cnfg_prof_btn_var):
         QThread.__init__(self)
         self.cnfg_prof_btn_var = cnfg_prof_btn_var
         self.tb_3 = tb_3
@@ -3056,7 +2969,6 @@ class ThreadClass3(QThread):
         self.path_0 = ''
         self.path_1 = ''
         self.write_call = ()
-        self.paths_readonly_btn_var = paths_readonly_btn_var
 
     def write_funk(self):
         global debug_enabled, path_var, dest_path_var, configuration_engaged, confirm_op0_wait, confirm_op0_bool, thread_engaged_var
@@ -3125,10 +3037,6 @@ class ThreadClass3(QThread):
         global debug_enabled, path_var, dest_path_var, configuration_engaged, confirm_op3_wait, confirm_op3_bool, thread_engaged_var
         if configuration_engaged is False:
             thread_engaged_var[3] = True
-            thread_initialized_var[3] = True
-            local_path = path_var[3]
-            dest = dest_path_var[3]
-            compare_bool = compare_bool_var[3]
             self.cnfg_prof_btn_var[0].setEnabled(False)
             self.cnfg_prof_btn_var[1].setEnabled(False)
             self.cnfg_prof_btn_var[2].setEnabled(False)
@@ -3139,7 +3047,9 @@ class ThreadClass3(QThread):
             self.cnfg_prof_btn_var[7].setEnabled(False)
             self.cnfg_prof_btn_var[8].setEnabled(False)
             self.cnfg_prof_btn_var[9].setEnabled(False)
-            self.paths_readonly_btn_var[3].setEnabled(False)
+            local_path = path_var[3]
+            dest = dest_path_var[3]
+            compare_bool = compare_bool_var[3]
             self.btnx_main_3.setIcon(QIcon(self.img_btnx_led_1))
             self.confirm_op3_tru.setIcon(QIcon(self.img_execute_true))
             self.confirm_op3_tru.setEnabled(True)
@@ -3147,7 +3057,6 @@ class ThreadClass3(QThread):
             self.stop_thread_btn_3.setIcon(QIcon(self.img_stop_thread_true))
             while confirm_op3_wait is True:
                 time.sleep(0.3)
-            thread_initialized_var[3] = False
             confirm_op3_wait = True
             self.confirm_op3_tru.setIcon(QIcon(self.img_execute_false))
             self.confirm_op3_tru.setEnabled(False)
@@ -3215,7 +3124,6 @@ class ThreadClass3(QThread):
         self.cnfg_prof_btn_var[7].setEnabled(True)
         self.cnfg_prof_btn_var[8].setEnabled(True)
         self.cnfg_prof_btn_var[9].setEnabled(True)
-        self.paths_readonly_btn_var[3].setEnabled(True)
         thread_engaged_var[3] = False
         confirm_op3_bool = False
         confirm_op3_wait = True
@@ -3235,7 +3143,7 @@ class ThreadClass3(QThread):
 
 class ThreadClass4(QThread):
     def __init__(self, tb_4, confirm_op4_tru, img_btnx_led_0, img_btnx_led_1, img_btnx_led_2, img_execute_false, img_execute_true, img_stop_thread_false, img_stop_thread_true,
-                 output_verbosity, btnx_main_4, stop_thread_btn_4, paths_readonly_btn_4, cnfg_prof_btn_var, paths_readonly_btn_var):
+                 output_verbosity, btnx_main_4, stop_thread_btn_4, paths_readonly_btn_4, cnfg_prof_btn_var):
         QThread.__init__(self)
         self.cnfg_prof_btn_var = cnfg_prof_btn_var
         self.tb_4 = tb_4
@@ -3258,7 +3166,6 @@ class ThreadClass4(QThread):
         self.path_0 = ''
         self.path_1 = ''
         self.write_call = ()
-        self.paths_readonly_btn_var = paths_readonly_btn_var
 
     def write_funk(self):
         global debug_enabled, path_var, dest_path_var, configuration_engaged, confirm_op0_wait, confirm_op0_bool, thread_engaged_var
@@ -3327,10 +3234,6 @@ class ThreadClass4(QThread):
         global debug_enabled, path_var, dest_path_var, configuration_engaged, confirm_op4_wait, confirm_op4_bool, thread_engaged_var
         if configuration_engaged is False:
             thread_engaged_var[4] = True
-            thread_initialized_var[4] = True
-            local_path = path_var[4]
-            dest = dest_path_var[4]
-            compare_bool = compare_bool_var[4]
             self.cnfg_prof_btn_var[0].setEnabled(False)
             self.cnfg_prof_btn_var[1].setEnabled(False)
             self.cnfg_prof_btn_var[2].setEnabled(False)
@@ -3341,7 +3244,9 @@ class ThreadClass4(QThread):
             self.cnfg_prof_btn_var[7].setEnabled(False)
             self.cnfg_prof_btn_var[8].setEnabled(False)
             self.cnfg_prof_btn_var[9].setEnabled(False)
-            self.paths_readonly_btn_var[4].setEnabled(False)
+            local_path = path_var[4]
+            dest = dest_path_var[4]
+            compare_bool = compare_bool_var[4]
             self.btnx_main_4.setIcon(QIcon(self.img_btnx_led_1))
             self.confirm_op4_tru.setIcon(QIcon(self.img_execute_true))
             self.confirm_op4_tru.setEnabled(True)
@@ -3349,7 +3254,6 @@ class ThreadClass4(QThread):
             self.stop_thread_btn_4.setIcon(QIcon(self.img_stop_thread_true))
             while confirm_op4_wait is True:
                 time.sleep(0.3)
-            thread_initialized_var[4] = False
             confirm_op4_wait = True
             self.confirm_op4_tru.setIcon(QIcon(self.img_execute_false))
             self.confirm_op4_tru.setEnabled(False)
@@ -3417,7 +3321,6 @@ class ThreadClass4(QThread):
         self.cnfg_prof_btn_var[7].setEnabled(True)
         self.cnfg_prof_btn_var[8].setEnabled(True)
         self.cnfg_prof_btn_var[9].setEnabled(True)
-        self.paths_readonly_btn_var[4].setEnabled(True)
         thread_engaged_var[4] = False
         confirm_op4_bool = False
         confirm_op4_wait = True
@@ -3437,7 +3340,7 @@ class ThreadClass4(QThread):
 
 class ThreadClass5(QThread):
     def __init__(self, tb_5, confirm_op5_tru, img_btnx_led_0, img_btnx_led_1, img_btnx_led_2, img_execute_false, img_execute_true, img_stop_thread_false, img_stop_thread_true,
-                 output_verbosity, btnx_main_5, stop_thread_btn_5, paths_readonly_btn_5, cnfg_prof_btn_var, paths_readonly_btn_var):
+                 output_verbosity, btnx_main_5, stop_thread_btn_5, paths_readonly_btn_5, cnfg_prof_btn_var):
         QThread.__init__(self)
         self.cnfg_prof_btn_var = cnfg_prof_btn_var
         self.tb_5 = tb_5
@@ -3460,7 +3363,6 @@ class ThreadClass5(QThread):
         self.path_0 = ''
         self.path_1 = ''
         self.write_call = ()
-        self.paths_readonly_btn_var = paths_readonly_btn_var
 
     def write_funk(self):
         global debug_enabled, path_var, dest_path_var, configuration_engaged, confirm_op0_wait, confirm_op0_bool, thread_engaged_var
@@ -3529,10 +3431,6 @@ class ThreadClass5(QThread):
         global debug_enabled, path_var, dest_path_var, configuration_engaged, confirm_op5_wait, confirm_op5_bool, thread_engaged_var
         if configuration_engaged is False:
             thread_engaged_var[5] = True
-            thread_initialized_var[5] = True
-            local_path = path_var[5]
-            dest = dest_path_var[5]
-            compare_bool = compare_bool_var[5]
             self.cnfg_prof_btn_var[0].setEnabled(False)
             self.cnfg_prof_btn_var[1].setEnabled(False)
             self.cnfg_prof_btn_var[2].setEnabled(False)
@@ -3543,7 +3441,9 @@ class ThreadClass5(QThread):
             self.cnfg_prof_btn_var[7].setEnabled(False)
             self.cnfg_prof_btn_var[8].setEnabled(False)
             self.cnfg_prof_btn_var[9].setEnabled(False)
-            self.paths_readonly_btn_var[5].setEnabled(False)
+            local_path = path_var[5]
+            dest = dest_path_var[5]
+            compare_bool = compare_bool_var[5]
             self.btnx_main_5.setIcon(QIcon(self.img_btnx_led_1))
             self.confirm_op5_tru.setIcon(QIcon(self.img_execute_true))
             self.confirm_op5_tru.setEnabled(True)
@@ -3551,7 +3451,6 @@ class ThreadClass5(QThread):
             self.stop_thread_btn_5.setIcon(QIcon(self.img_stop_thread_true))
             while confirm_op5_wait is True:
                 time.sleep(0.3)
-            thread_initialized_var[5] = False
             confirm_op5_wait = True
             self.confirm_op5_tru.setIcon(QIcon(self.img_execute_false))
             self.confirm_op5_tru.setEnabled(False)
@@ -3619,7 +3518,6 @@ class ThreadClass5(QThread):
         self.cnfg_prof_btn_var[7].setEnabled(True)
         self.cnfg_prof_btn_var[8].setEnabled(True)
         self.cnfg_prof_btn_var[9].setEnabled(True)
-        self.paths_readonly_btn_var[5].setEnabled(True)
         thread_engaged_var[5] = False
         confirm_op5_bool = False
         confirm_op5_wait = True
