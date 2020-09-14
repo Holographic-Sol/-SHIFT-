@@ -1547,43 +1547,43 @@ class App(QMainWindow):
         global debug_enabled, settings_active_int
         if settings_active_int is 0:
             settings_active_int = 5
-            self.settings_drop_down_funk()
+            self.btnx_set_focus_funk()
         elif settings_active_int is 1:
             settings_active_int = 0
-            self.settings_drop_down_funk()
+            self.btnx_set_focus_funk()
         elif settings_active_int is 2:
             settings_active_int = 1
-            self.settings_drop_down_funk()
+            self.btnx_set_focus_funk()
         elif settings_active_int is 3:
             settings_active_int = 2
-            self.settings_drop_down_funk()
+            self.btnx_set_focus_funk()
         elif settings_active_int is 4:
             settings_active_int = 3
-            self.settings_drop_down_funk()
+            self.btnx_set_focus_funk()
         elif settings_active_int is 5:
             settings_active_int = 4
-            self.settings_drop_down_funk()
+            self.btnx_set_focus_funk()
     # Sector 2 Funtion: Moves To Next Settings Page Right
     def scr_right_funk(self):
         global debug_enabled, settings_active_int
         if settings_active_int is 0:
             settings_active_int = 1
-            self.settings_drop_down_funk()
+            self.btnx_set_focus_funk()
         elif settings_active_int is 1:
             settings_active_int = 2
-            self.settings_drop_down_funk()
+            self.btnx_set_focus_funk()
         elif settings_active_int is 2:
             settings_active_int = 3
-            self.settings_drop_down_funk()
+            self.btnx_set_focus_funk()
         elif settings_active_int is 3:
             settings_active_int = 4
-            self.settings_drop_down_funk()
+            self.btnx_set_focus_funk()
         elif settings_active_int is 4:
             settings_active_int = 5
-            self.settings_drop_down_funk()
+            self.btnx_set_focus_funk()
         elif settings_active_int is 5:
             settings_active_int = 0
-            self.settings_drop_down_funk()
+            self.btnx_set_focus_funk()
     # Sector 2 Funtion: Provides settings_source_funk With Information From Source Path Edit 0
     def settings_source_pre_funk0(self):
         global debug_enabled, source_path_entered, source_selected
@@ -1792,36 +1792,6 @@ class App(QMainWindow):
         self.paths_readonly_btn_4.setIconSize(QSize(8, 8))
         self.paths_readonly_btn_5.setIconSize(QSize(8, 8))
 
-    def settings_drop_down_pre_funk_0(self):
-        global settings_active_int
-        settings_active_int = 0
-        self.settings_drop_down_funk()
-
-    def settings_drop_down_pre_funk_1(self):
-        global settings_active_int
-        settings_active_int = 1
-        self.settings_drop_down_funk()
-
-    def settings_drop_down_pre_funk_2(self):
-        global settings_active_int
-        settings_active_int = 2
-        self.settings_drop_down_funk()
-
-    def settings_drop_down_pre_funk_3(self):
-        global settings_active_int
-        settings_active_int = 3
-        self.settings_drop_down_funk()
-
-    def settings_drop_down_pre_funk_4(self):
-        global settings_active_int
-        settings_active_int = 4
-        self.settings_drop_down_funk()
-
-    def settings_drop_down_pre_funk_5(self):
-        global settings_active_int
-        settings_active_int = 5
-        self.settings_drop_down_funk()
-
     def highlight_off_0(self):
         self.btnx_main_var[0].setStyleSheet(self.default_btnx_main_style)
         self.btnx_main_var[1].setStyleSheet(self.default_btnx_main_style)
@@ -1850,45 +1820,6 @@ class App(QMainWindow):
         self.settings_title_var[3].setStyleSheet(self.default_qlbl_style)
         self.settings_title_var[4].setStyleSheet(self.default_qlbl_style)
         self.settings_title_var[5].setStyleSheet(self.default_qlbl_style)
-
-    def settings_drop_down_funk(self):
-        global debug_enabled, settings_active_int, settings_active_int_prev, name_tile
-        self.hide_settings_funk()
-        self.settings_title_focus_false()
-        self.show_settings_title()
-        self.readonly_funk_0()
-        self.highlight_off_0()
-        self.backlabel_resize_0()
-        self.title_lable_resize()
-
-        # Emphasize Importance
-        self.btnx_main_var[settings_active_int].setStyleSheet(self.default_btnx_main_style_1)
-        self.stop_thread_btn_var[settings_active_int].setStyleSheet(self.default_qpb_highlight)
-        self.confirm_op_var[settings_active_int].setStyleSheet(self.default_qpb_highlight)
-        self.settings_title_var[settings_active_int].setStyleSheet(self.default_qlbl_highlight)
-        self.settings_source_edit_var[settings_active_int].setStyleSheet(self.default_qle_highlight_0)
-        self.settings_dest_edit_var[settings_active_int].setStyleSheet(self.default_qle_highlight_0)
-        self.settings_source_label.setStyleSheet(self.default_qlbl_highlight)
-        self.settings_dest_label.setStyleSheet(self.default_qlbl_highlight)
-        self.tb_label_0.setStyleSheet(self.default_qlbl_highlight)
-        self.paths_readonly_btn_var[settings_active_int].setStyleSheet(self.default_qpb_highlight)
-
-        self.settings_title_var[settings_active_int].resize(self.title_lable_w_0, self.title_lable_h_1)
-        self.back_label_var[settings_active_int].resize(self.back_label_w_1, self.back_label_h_1)
-        self.tb_label_0.setText(name_tile[settings_active_int] + ' Output')
-        self.paths_readonly_btn_var[settings_active_int].setIconSize(QSize(8, 8))
-        self.paths_readonly_btn_var[settings_active_int].setIcon(QIcon(self.img_read_ony_true))
-
-        self.settings_source_edit_var[settings_active_int].show()
-        self.settings_dest_edit_var[settings_active_int].show()
-        self.paths_readonly_btn_var[settings_active_int].show()
-        self.tb_var[settings_active_int].show()
-        self.tb_label_0.show()
-
-        self.settings_source_edit_var[settings_active_int].setReadOnly(True)
-        self.settings_dest_edit_var[settings_active_int].setReadOnly(True)
-
-        settings_active_int_prev = settings_active_int
 
     def backlabel_resize_0(self):
         self.back_label_var[0].resize(self.back_label_w_0, self.back_label_h_0)
