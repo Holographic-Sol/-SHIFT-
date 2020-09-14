@@ -433,63 +433,57 @@ class App(QMainWindow):
         self.settings_dest_label.setStyleSheet(self.default_qlbl_highlight)
         self.settings_dest_label.setAlignment(Qt.AlignCenter) 
         # Sector 2: Title Lable Signifies Which Path Is Displayed To Be Configured 0
-        self.setting_title0 = QLabel(self)
+        self.setting_title0 = QPushButton(self)
         self.setting_title0.resize(self.title_lable_w_0, self.title_lable_h_0)
         self.setting_title0.move((back_label_ankor_w0 + back_label_buffer), (back_label_ankor_h0 + back_label_buffer + btnx_h + btnx_buffer_0))
         self.setting_title0.setFont(self.font_s6b)
         self.setting_title0.setText("")
-        self.setting_title0.setStyleSheet(self.default_qlbl_highlight)
-        self.setting_title0.setAlignment(Qt.AlignCenter) 
+        self.setting_title0.setStyleSheet(self.default_qpbtn_style_txt_0)
         self.settings_title_var.append(self.setting_title0)
         self.setting_title0.show()
         # Sector 2: Title Lable Signifies Which Path Is Displayed To Be Configured 1
-        self.setting_title1 = QLabel(self)
+        self.setting_title1 = QPushButton(self)
         self.setting_title1.resize(self.title_lable_w_0, self.title_lable_h_0)
         self.setting_title1.move((back_label_ankor_w1 + back_label_buffer), (back_label_ankor_h1 + back_label_buffer + btnx_h + btnx_buffer_0))
         self.setting_title1.setFont(self.font_s6b)
         self.setting_title1.setText("")
-        self.setting_title1.setStyleSheet(self.default_qlbl_style)
-        self.setting_title1.setAlignment(Qt.AlignCenter)
+        self.setting_title1.setStyleSheet(self.default_qpbtn_style_txt_0)
         self.settings_title_var.append(self.setting_title1)
         self.setting_title1.show()
         # Sector 2: Title Lable Signifies Which Path Is Displayed To Be Configured 2
-        self.setting_title2 = QLabel(self)
+        self.setting_title2 = QPushButton(self)
         self.setting_title2.resize(self.title_lable_w_0, self.title_lable_h_0)
         self.setting_title2.move((back_label_ankor_w2 + back_label_buffer), (back_label_ankor_h2 + back_label_buffer + btnx_h + btnx_buffer_0))
         self.setting_title2.setFont(self.font_s6b)
         self.setting_title2.setText("")
-        self.setting_title2.setStyleSheet(self.default_qlbl_style)
-        self.setting_title2.setAlignment(Qt.AlignCenter)
+        self.setting_title2.setStyleSheet(self.default_qpbtn_style_txt_0)
         self.settings_title_var.append(self.setting_title2)
         self.setting_title2.show()
         # Sector 2: Title Lable Signifies Which Path Is Displayed To Be Configured 3
-        self.setting_title3 = QLabel(self)
+        self.setting_title3 = QPushButton(self)
         self.setting_title3.resize(self.title_lable_w_0, self.title_lable_h_0)
         self.setting_title3.move((back_label_ankor_w3 + back_label_buffer), (back_label_ankor_h3 + back_label_buffer + btnx_h + btnx_buffer_0))
         self.setting_title3.setFont(self.font_s6b)
         self.setting_title3.setText("")
-        self.setting_title3.setStyleSheet(self.default_qlbl_style)
-        self.setting_title3.setAlignment(Qt.AlignCenter)
+        self.setting_title3.setStyleSheet(self.default_qpbtn_style_txt_0)
         self.settings_title_var.append(self.setting_title3)
         self.setting_title3.show()
         # Sector 2: Title Lable Signifies Which Path Is Displayed To Be Configured 4
-        self.setting_title4 = QLabel(self)
+        self.setting_title4 = QPushButton(self)
         self.setting_title4.resize(self.title_lable_w_0, self.title_lable_h_0)
         self.setting_title4.move((back_label_ankor_w4 + back_label_buffer), (back_label_ankor_h4 + back_label_buffer + btnx_h + btnx_buffer_0))
         self.setting_title4.setFont(self.font_s6b)
         self.setting_title4.setText("")
-        self.setting_title4.setStyleSheet(self.default_qlbl_style)
-        self.setting_title4.setAlignment(Qt.AlignCenter)
+        self.setting_title4.setStyleSheet(self.default_qpbtn_style_txt_0)
         self.settings_title_var.append(self.setting_title4)
         self.setting_title4.show()
         # Sector 2: Title Lable Signifies Which Path Is Displayed To Be Configured 5
-        self.setting_title5 = QLabel(self)
+        self.setting_title5 = QPushButton(self)
         self.setting_title5.resize(self.title_lable_w_0, self.title_lable_h_0)
         self.setting_title5.move((back_label_ankor_w5 + back_label_buffer), (back_label_ankor_h5 + back_label_buffer + btnx_h + btnx_buffer_0))
         self.setting_title5.setFont(self.font_s6b)
         self.setting_title5.setText("")
-        self.setting_title5.setStyleSheet(self.default_qlbl_style)
-        self.setting_title5.setAlignment(Qt.AlignCenter) 
+        self.setting_title5.setStyleSheet(self.default_qpbtn_style_txt_0)
         self.settings_title_var.append(self.setting_title5)
         self.setting_title5.show()
         # Sector 1: Title Label QLine Edits Which Title Is Displayed 0
@@ -897,6 +891,13 @@ class App(QMainWindow):
         self.paths_readonly_btn_3.clicked.connect(self.paths_readonly_button_pre_funk_3)
         self.paths_readonly_btn_4.clicked.connect(self.paths_readonly_button_pre_funk_4)
         self.paths_readonly_btn_5.clicked.connect(self.paths_readonly_button_pre_funk_5)
+        #Sector 2: Plug Settings Title Buttons Into Set Focus Pre-Functions
+        self.setting_title0.clicked.connect(self.btnx_set_focus_pre_funk_0)
+        self.setting_title1.clicked.connect(self.btnx_set_focus_pre_funk_1)
+        self.setting_title2.clicked.connect(self.btnx_set_focus_pre_funk_2)
+        self.setting_title3.clicked.connect(self.btnx_set_focus_pre_funk_3)
+        self.setting_title4.clicked.connect(self.btnx_set_focus_pre_funk_4)
+        self.setting_title5.clicked.connect(self.btnx_set_focus_pre_funk_5)
         # Thread: Adjusts App Geometry To Account For Display Re-Scaling
         self.event_thread = EventMonitorScrollClass(self.scr_right, self.scr_left, self.width, self.height)
         self.event_thread.start()
@@ -1185,6 +1186,18 @@ class App(QMainWindow):
         self.default_qpbtn_style = """QPushButton{background-color: rgb(30, 30, 30);
                border:0px solid rgb(0, 0, 0);}"""
 
+        # Default QPushButton Text
+        self.default_qpbtn_style_txt_0 = """QPushButton {background-color: rgb(30, 30, 30);
+           text-align: center;
+           color: grey;
+           border:0px solid rgb(35, 35, 35);}"""
+
+        # Default Highlighted QPushButton Text Highlight
+        self.default_qpbtn_style_txt_1 = """QPushButton {background-color: rgb(30, 30, 30);
+           text-align: center;
+           color: white;
+           border:0px solid rgb(35, 35, 35);}"""
+
         # Default Highlighted QLineEdit 
         self.default_qle_highlight_0 = """QLineEdit {background-color: rgb(30, 30, 30);
             border-top:0px solid rgb(30, 30, 200);
@@ -1448,7 +1461,7 @@ class App(QMainWindow):
             self.setting_title_B_var[tile_int].hide()
             self.settings_title_var[tile_int].show()
             self.paths_readonly_button_funk()
-        self.settings_title_var[tile_int].setAlignment(Qt.AlignCenter)
+        #self.settings_title_var[tile_int].setAlignment(Qt.AlignCenter)
     # Section 1 Funtion: Main Function Confirmation 0
     def confirm_op0_funk0(self):
         global confirm_op0_bool, confirm_op0_wait, debug_enabled
@@ -1724,12 +1737,12 @@ class App(QMainWindow):
         self.btnx_set_focus_funk()
 
     def settings_title_focus_false(self):
-        self.settings_title_var[0].setStyleSheet(self.default_qlbl_style)
-        self.settings_title_var[1].setStyleSheet(self.default_qlbl_style)
-        self.settings_title_var[2].setStyleSheet(self.default_qlbl_style)
-        self.settings_title_var[3].setStyleSheet(self.default_qlbl_style)
-        self.settings_title_var[4].setStyleSheet(self.default_qlbl_style)
-        self.settings_title_var[5].setStyleSheet(self.default_qlbl_style)
+        self.settings_title_var[0].setStyleSheet(self.default_qpbtn_style_txt_0)
+        self.settings_title_var[1].setStyleSheet(self.default_qpbtn_style_txt_0)
+        self.settings_title_var[2].setStyleSheet(self.default_qpbtn_style_txt_0)
+        self.settings_title_var[3].setStyleSheet(self.default_qpbtn_style_txt_0)
+        self.settings_title_var[4].setStyleSheet(self.default_qpbtn_style_txt_0)
+        self.settings_title_var[5].setStyleSheet(self.default_qpbtn_style_txt_0)
 
     def show_settings_title(self):
         self.settings_title_var[0].show()
@@ -1752,7 +1765,7 @@ class App(QMainWindow):
         self.btnx_main_var[settings_active_int].setStyleSheet(self.default_btnx_main_style_1)
         self.stop_thread_btn_var[settings_active_int].setStyleSheet(self.default_qpb_highlight)
         self.confirm_op_var[settings_active_int].setStyleSheet(self.default_qpb_highlight)
-        self.settings_title_var[settings_active_int].setStyleSheet(self.default_qlbl_highlight)
+        self.settings_title_var[settings_active_int].setStyleSheet(self.default_qpbtn_style_txt_1)
         self.settings_source_edit_var[settings_active_int].setStyleSheet(self.default_qle_highlight_0)
         self.settings_dest_edit_var[settings_active_int].setStyleSheet(self.default_qle_highlight_0)
         self.settings_source_label.setStyleSheet(self.default_qlbl_highlight)
@@ -1814,12 +1827,12 @@ class App(QMainWindow):
         self.confirm_op_var[4].setStyleSheet(self.default_qpbtn_style)
         self.confirm_op_var[5].setStyleSheet(self.default_qpbtn_style)
 
-        self.settings_title_var[0].setStyleSheet(self.default_qlbl_style)
-        self.settings_title_var[1].setStyleSheet(self.default_qlbl_style)
-        self.settings_title_var[2].setStyleSheet(self.default_qlbl_style)
-        self.settings_title_var[3].setStyleSheet(self.default_qlbl_style)
-        self.settings_title_var[4].setStyleSheet(self.default_qlbl_style)
-        self.settings_title_var[5].setStyleSheet(self.default_qlbl_style)
+        self.settings_title_var[0].setStyleSheet(self.default_qpbtn_style_txt_0)
+        self.settings_title_var[1].setStyleSheet(self.default_qpbtn_style_txt_0)
+        self.settings_title_var[2].setStyleSheet(self.default_qpbtn_style_txt_0)
+        self.settings_title_var[3].setStyleSheet(self.default_qpbtn_style_txt_0)
+        self.settings_title_var[4].setStyleSheet(self.default_qpbtn_style_txt_0)
+        self.settings_title_var[5].setStyleSheet(self.default_qpbtn_style_txt_0)
 
     def backlabel_resize_0(self):
         self.back_label_var[0].resize(self.back_label_w_0, self.back_label_h_0)
@@ -2269,7 +2282,7 @@ class UpdateSettingsWindow(QThread):
                 i = 0
                 for self.settings_title_vars in self.settings_title_var:
                     if name_tile[i] != self.settings_title_var[i]:
-                        self.settings_title_var[i].setAlignment(Qt.AlignCenter)
+                        #self.settings_title_var[i].setAlignment(Qt.AlignCenter)
                         self.settings_title_var[i].setText(name_tile[i])
                     i += 1
                 self.tb_label_0.setText(name_tile[settings_active_int] + ' Output')
