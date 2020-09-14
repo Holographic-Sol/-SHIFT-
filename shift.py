@@ -2204,7 +2204,6 @@ class UpdateSettingsWindow(QThread):
                 check_var.append(True)
             i += 1
         if not False in check_var:
-            print('-- reading configuration')
             name_max_chars = 16
             name_tile = []
             path_var = []
