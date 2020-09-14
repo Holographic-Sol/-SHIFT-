@@ -2334,7 +2334,7 @@ class UpdateSettingsWindow(QThread):
                     elif path_var[i] != self.settings_source_edit_var[i].text()  and thread_engaged_var[i] is True:
                         print(path_var[i], self.settings_source_edit_var[i].text())
                         if thread_initialized_var[i] is True:
-                            print('-- thread', i, 'in initialized state: terminating')
+                            #print('-- thread', i, 'in initialized state: terminating')
                             self.local_thread_var[i].stop_thr()
                     i += 1
                 i = 0
@@ -2344,7 +2344,7 @@ class UpdateSettingsWindow(QThread):
                     elif dest_path_var[i] != self.settings_dest_edit_var[i].text()  and thread_engaged_var[i] is True:
                         print(dest_path_var[i], self.settings_dest_edit_var[i].text())
                         if thread_initialized_var[i] is True:
-                            print('-- thread', i, 'in initialized state: terminating')
+                            #print('-- thread', i, 'in initialized state: terminating')
                             self.local_thread_var[i].stop_thr()
                     i += 1
                 i = 0
@@ -2354,7 +2354,7 @@ class UpdateSettingsWindow(QThread):
                     elif name_tile[i] != self.settings_title_var[i].text() and thread_engaged_var[i] is True:
                         print(name_tile[i], self.settings_title_var[i].text())
                         if thread_initialized_var[i] is True:
-                            print('-- thread', i, 'in initialized state: terminating')
+                            #print('-- thread', i, 'in initialized state: terminating')
                             self.local_thread_var[i].stop_thr()
                     i += 1
                 self.tb_label_0.setText(name_tile[settings_active_int] + ' Output')
