@@ -2065,7 +2065,7 @@ class ThreadClass0(QThread):
                                     self.f_count += 1
                                     self.f_count_str = str(self.f_count)
                     self.bytes_count_str = str(self.bytes_count)
-                    self.loading_lbl_0.resize(0, 7)
+                    self.loading_lbl_0.resize(1, 8)
                     self.loading_lbl_0.show()
                     i = 0
                     for self.path_0_items in self.path_0_item:
@@ -2084,8 +2084,16 @@ class ThreadClass0(QThread):
                             self.write_funk()
                             self.write_call = 0
                             self.check_write()
-                            self.progress_int = (int(self.progress) - 13)
-                            self.loading_lbl_0.resize(self.progress_int, 8)
+
+                            self.progress_int = int(self.progress)
+                            if self.progress_int > 1:
+                                if self.progress_int > 86:
+                                    self.progress_int = (int(self.progress_int) - 13)
+                                    self.loading_lbl_0.resize(self.progress_int, 8)
+                                elif self.progress_int < 86:
+                                    self.progress_int = int(self.progress)
+                                    self.loading_lbl_0.resize(self.progress_int, 8)
+
                         elif os.path.exists(self.path_1) and os.path.exists(self.path_0) and compare_bool is True:
                             ma = os.path.getmtime(self.path_0)
                             mb = os.path.getmtime(self.path_1)
@@ -2102,13 +2110,18 @@ class ThreadClass0(QThread):
                                 self.write_funk()
                                 self.write_call = 1
                                 self.check_write()
-                                self.progress_int = (int(self.progress) - 13)
-                                self.loading_lbl_0.resize(self.progress_int, 8)
+
+                                self.progress_int = int(self.progress)
+                                if self.progress_int > 1:
+                                    if self.progress_int > 86:
+                                        self.progress_int = (int(self.progress_int) - 13)
+                                        self.loading_lbl_0.resize(self.progress_int, 8)
+                                    elif self.progress_int < 86:
+                                        self.progress_int = int(self.progress)
+                                        self.loading_lbl_0.resize(self.progress_int, 8)
                         i += 1
         self.path_0_item = []
         self.path_1_item = []
-        self.loading_lbl_0.resize(0, 7)
-        self.loading_lbl_0.hide()
         self.summary()
         self.disengage()
 
@@ -2374,8 +2387,14 @@ class ThreadClass1(QThread):
                             self.write_funk()
                             self.write_call = 0
                             self.check_write()
-                            self.progress_int = (int(self.progress) - 13)
-                            self.loading_lbl_1.resize(self.progress_int, 8)
+                            self.progress_int = int(self.progress)
+                            if self.progress_int > 1:
+                                if self.progress_int > 86:
+                                    self.progress_int = (int(self.progress_int) - 13)
+                                    self.loading_lbl_1.resize(self.progress_int, 8)
+                                elif self.progress_int < 86:
+                                    self.progress_int = int(self.progress)
+                                    self.loading_lbl_1.resize(self.progress_int, 8)
                         elif os.path.exists(self.path_1) and os.path.exists(self.path_0) and compare_bool is True:
                             ma = os.path.getmtime(self.path_0)
                             mb = os.path.getmtime(self.path_1)
@@ -2392,13 +2411,17 @@ class ThreadClass1(QThread):
                                 self.write_funk()
                                 self.write_call = 1
                                 self.check_write()
-                                self.progress_int = (int(self.progress) - 13)
-                                self.loading_lbl_1.resize(self.progress_int, 8)
+                                self.progress_int = int(self.progress)
+                                if self.progress_int > 1:
+                                    if self.progress_int > 86:
+                                        self.progress_int = (int(self.progress_int) - 13)
+                                        self.loading_lbl_1.resize(self.progress_int, 8)
+                                    elif self.progress_int < 86:
+                                        self.progress_int = int(self.progress)
+                                        self.loading_lbl_1.resize(self.progress_int, 8)
                         i += 1
         self.path_0_item = []
         self.path_1_item = []
-        self.loading_lbl_1.resize(0, 7)
-        self.loading_lbl_1.hide()
         self.summary()
         self.disengage()
 
@@ -2664,8 +2687,14 @@ class ThreadClass2(QThread):
                             self.write_funk()
                             self.write_call = 0
                             self.check_write()
-                            self.progress_int = (int(self.progress) - 13)
-                            self.loading_lbl_2.resize(self.progress_int, 8)
+                            self.progress_int = int(self.progress)
+                            if self.progress_int > 1:
+                                if self.progress_int > 86:
+                                    self.progress_int = (int(self.progress_int) - 13)
+                                    self.loading_lbl_2.resize(self.progress_int, 8)
+                                elif self.progress_int < 86:
+                                    self.progress_int = int(self.progress)
+                                    self.loading_lbl_2.resize(self.progress_int, 8)
                         elif os.path.exists(self.path_1) and os.path.exists(self.path_0) and compare_bool is True:
                             ma = os.path.getmtime(self.path_0)
                             mb = os.path.getmtime(self.path_1)
@@ -2682,13 +2711,17 @@ class ThreadClass2(QThread):
                                 self.write_funk()
                                 self.write_call = 1
                                 self.check_write()
-                                self.progress_int = (int(self.progress) - 13)
-                                self.loading_lbl_2.resize(self.progress_int, 8)
+                                self.progress_int = int(self.progress)
+                                if self.progress_int > 1:
+                                    if self.progress_int > 86:
+                                        self.progress_int = (int(self.progress_int) - 13)
+                                        self.loading_lbl_2.resize(self.progress_int, 8)
+                                    elif self.progress_int < 86:
+                                        self.progress_int = int(self.progress)
+                                        self.loading_lbl_2.resize(self.progress_int, 8)
                         i += 1
         self.path_0_item = []
         self.path_1_item = []
-        self.loading_lbl_2.resize(0, 7)
-        self.loading_lbl_2.hide()
         self.summary()
         self.disengage()
 
@@ -2954,8 +2987,14 @@ class ThreadClass3(QThread):
                             self.write_funk()
                             self.write_call = 0
                             self.check_write()
-                            self.progress_int = (int(self.progress) - 13)
-                            self.loading_lbl_3.resize(self.progress_int, 8)
+                            self.progress_int = int(self.progress)
+                            if self.progress_int > 1:
+                                if self.progress_int > 86:
+                                    self.progress_int = (int(self.progress_int) - 13)
+                                    self.loading_lbl_3.resize(self.progress_int, 8)
+                                elif self.progress_int < 86:
+                                    self.progress_int = int(self.progress)
+                                    self.loading_lbl_3.resize(self.progress_int, 8)
                         elif os.path.exists(self.path_1) and os.path.exists(self.path_0) and compare_bool is True:
                             ma = os.path.getmtime(self.path_0)
                             mb = os.path.getmtime(self.path_1)
@@ -2972,13 +3011,17 @@ class ThreadClass3(QThread):
                                 self.write_funk()
                                 self.write_call = 1
                                 self.check_write()
-                                self.progress_int = (int(self.progress) - 13)
-                                self.loading_lbl_3.resize(self.progress_int, 8)
+                                self.progress_int = int(self.progress)
+                                if self.progress_int > 1:
+                                    if self.progress_int > 86:
+                                        self.progress_int = (int(self.progress_int) - 13)
+                                        self.loading_lbl_3.resize(self.progress_int, 8)
+                                    elif self.progress_int < 86:
+                                        self.progress_int = int(self.progress)
+                                        self.loading_lbl_3.resize(self.progress_int, 8)
                         i += 1
         self.path_0_item = []
         self.path_1_item = []
-        self.loading_lbl_3.resize(0, 7)
-        self.loading_lbl_3.hide()
         self.summary()
         self.disengage()
 
@@ -3244,8 +3287,14 @@ class ThreadClass4(QThread):
                             self.write_funk()
                             self.write_call = 0
                             self.check_write()
-                            self.progress_int = (int(self.progress) - 13)
-                            self.loading_lbl_4.resize(self.progress_int, 8)
+                            self.progress_int = int(self.progress)
+                            if self.progress_int > 1:
+                                if self.progress_int > 86:
+                                    self.progress_int = (int(self.progress_int) - 13)
+                                    self.loading_lbl_4.resize(self.progress_int, 8)
+                                elif self.progress_int < 86:
+                                    self.progress_int = int(self.progress)
+                                    self.loading_lbl_4.resize(self.progress_int, 8)
                         elif os.path.exists(self.path_1) and os.path.exists(self.path_0) and compare_bool is True:
                             ma = os.path.getmtime(self.path_0)
                             mb = os.path.getmtime(self.path_1)
@@ -3262,13 +3311,17 @@ class ThreadClass4(QThread):
                                 self.write_funk()
                                 self.write_call = 1
                                 self.check_write()
-                                self.progress_int = (int(self.progress) - 13)
-                                self.loading_lbl_4.resize(self.progress_int, 8)
+                                self.progress_int = int(self.progress)
+                                if self.progress_int > 1:
+                                    if self.progress_int > 86:
+                                        self.progress_int = (int(self.progress_int) - 13)
+                                        self.loadiloading_lbl_4ng_lbl_0.resize(self.progress_int, 8)
+                                    elif self.progress_int < 86:
+                                        self.progress_int = int(self.progress)
+                                        self.loading_lbl_4.resize(self.progress_int, 8)
                         i += 1
         self.path_0_item = []
         self.path_1_item = []
-        self.loading_lbl_4.resize(0, 7)
-        self.loading_lbl_4.hide()
         self.summary()
         self.disengage()
 
@@ -3534,8 +3587,14 @@ class ThreadClass5(QThread):
                             self.write_funk()
                             self.write_call = 0
                             self.check_write()
-                            self.progress_int = (int(self.progress) - 13)
-                            self.loading_lbl_5.resize(self.progress_int, 8)
+                            self.progress_int = int(self.progress)
+                            if self.progress_int > 1:
+                                if self.progress_int > 86:
+                                    self.progress_int = (int(self.progress_int) - 13)
+                                    self.loading_lbl_5.resize(self.progress_int, 8)
+                                elif self.progress_int < 86:
+                                    self.progress_int = int(self.progress)
+                                    self.loading_lbl_5.resize(self.progress_int, 8)
                         elif os.path.exists(self.path_1) and os.path.exists(self.path_0) and compare_bool is True:
                             ma = os.path.getmtime(self.path_0)
                             mb = os.path.getmtime(self.path_1)
@@ -3552,13 +3611,17 @@ class ThreadClass5(QThread):
                                 self.write_funk()
                                 self.write_call = 1
                                 self.check_write()
-                                self.progress_int = (int(self.progress) - 13)
-                                self.loading_lbl_5.resize(self.progress_int, 8)
+                                self.progress_int = int(self.progress)
+                                if self.progress_int > 1:
+                                    if self.progress_int > 86:
+                                        self.progress_int = (int(self.progress_int) - 13)
+                                        self.loading_lbl_5.resize(self.progress_int, 8)
+                                    elif self.progress_int < 86:
+                                        self.progress_int = int(self.progress)
+                                        self.loading_lbl_5.resize(self.progress_int, 8)
                         i += 1
         self.path_0_item = []
         self.path_1_item = []
-        self.loading_lbl_5.resize(0, 7)
-        self.loading_lbl_5.hide()
         self.summary()
         self.disengage()
 
