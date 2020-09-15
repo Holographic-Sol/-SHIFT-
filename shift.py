@@ -307,7 +307,6 @@ class App(QMainWindow):
             self.setting_title = QPushButton(self)
             self.setting_title.resize(self.title_lable_w_0, self.title_lable_h_0)
             self.setting_title.setFont(self.font_s6b)
-            self.setting_title.setText("")
             self.setting_title.setStyleSheet(self.default_qpbtn_style_txt_0)
             self.settings_title_var.append(self.setting_title)
             self.settings_title_var[i].show()
@@ -316,7 +315,6 @@ class App(QMainWindow):
             self.setting_title_B = QLineEdit(self)
             self.setting_title_B.resize(self.title_lable_w_0, self.title_lable_h_0)
             self.setting_title_B.setFont(self.font_s6b)
-            self.setting_title_B.setText('')
             self.setting_title_B.setReadOnly(False)
             self.setting_title_B.setStyleSheet(self.default_qle_highlight_1)
             self.setting_title_B_var.append(self.setting_title_B)
@@ -698,25 +696,6 @@ class App(QMainWindow):
         self.update_settings_window_thread.start()
         self.show()
 
-    def center(self):
-        qr = self.frameGeometry()
-        cp = QDesktopWidget().availableGeometry().center()
-        qr.moveCenter(cp)
-        self.move(qr.topLeft())
-
-    def mousePressEvent(self, event):
-        self.oldPos = event.globalPos()
-
-    def mouseMoveEvent(self, event):
-        try:
-            delta = QPoint(event.globalPos() - self.oldPos)
-            self.move(self.x() + delta.x(), self.y() + delta.y())
-            self.oldPos = event.globalPos()
-            if debug_enabled is True:
-                print(self.oldPos)
-        except Exception as e:
-            if debug_enabled is True:
-                print('-- exception:', str(e).strip().encode('utf-8'))
     def set_style_sheet_funk(self):
         global debug_enabled
         if debug_enabled is True:
@@ -922,44 +901,143 @@ class App(QMainWindow):
         self.img_stop_thread_false = str(self.img_path + self.img_var[17])
         self.img_stop_thread_true = str(self.img_path + self.img_var[18])
 
+    def center(self):
+        qr = self.frameGeometry()
+        cp = QDesktopWidget().availableGeometry().center()
+        qr.moveCenter(cp)
+        self.move(qr.topLeft())
+
+    def mousePressEvent(self, event):
+        self.oldPos = event.globalPos()
+
+    def mouseMoveEvent(self, event):
+        try:
+            delta = QPoint(event.globalPos() - self.oldPos)
+            self.move(self.x() + delta.x(), self.y() + delta.y())
+            self.oldPos = event.globalPos()
+            if debug_enabled is True:
+                print(self.oldPos)
+        except Exception as e:
+            if debug_enabled is True:
+                print('-- exception:', str(e).strip().encode('utf-8'))
+
     def title_logo_btn_funk(self):
         if debug_enabled is True:
             print('-- plugged in: title_logo_btn_funk')
 
-    def all_readonly(self):
-        self.settings_source_edit_var[0].setReadOnly(True)
-        self.settings_source_edit_var[1].setReadOnly(True)
-        self.settings_source_edit_var[2].setReadOnly(True)
-        self.settings_source_edit_var[3].setReadOnly(True)
-        self.settings_source_edit_var[4].setReadOnly(True)
-        self.settings_source_edit_var[5].setReadOnly(True)
-        self.settings_dest_edit_var[0].setReadOnly(True)
-        self.settings_dest_edit_var[1].setReadOnly(True)
-        self.settings_dest_edit_var[2].setReadOnly(True)
-        self.settings_dest_edit_var[3].setReadOnly(True)
-        self.settings_dest_edit_var[4].setReadOnly(True)
-        self.settings_dest_edit_var[5].setReadOnly(True)
-        self.paths_readonly_btn_0.setIcon(QIcon(self.img_read_ony_true))
-        self.paths_readonly_btn_1.setIcon(QIcon(self.img_read_ony_true))
-        self.paths_readonly_btn_2.setIcon(QIcon(self.img_read_ony_true))
-        self.paths_readonly_btn_3.setIcon(QIcon(self.img_read_ony_true))
-        self.paths_readonly_btn_4.setIcon(QIcon(self.img_read_ony_true))
-        self.paths_readonly_btn_5.setIcon(QIcon(self.img_read_ony_true))
-        self.paths_readonly_btn_0.setIconSize(QSize(8, 8))
-        self.paths_readonly_btn_1.setIconSize(QSize(8, 8))
-        self.paths_readonly_btn_2.setIconSize(QSize(8, 8))
-        self.paths_readonly_btn_3.setIconSize(QSize(8, 8))
-        self.paths_readonly_btn_4.setIconSize(QSize(8, 8))
-        self.paths_readonly_btn_5.setIconSize(QSize(8, 8))
+    def scr_left_funk(self):
+        global debug_enabled, settings_active_int
+        if settings_active_int is 0:
+            settings_active_int = 5
+            self.btnx_set_focus_funk()
+        elif settings_active_int is 1:
+            settings_active_int = 0
+            self.btnx_set_focus_funk()
+        elif settings_active_int is 2:
+            settings_active_int = 1
+            self.btnx_set_focus_funk()
+        elif settings_active_int is 3:
+            settings_active_int = 2
+            self.btnx_set_focus_funk()
+        elif settings_active_int is 4:
+            settings_active_int = 3
+            self.btnx_set_focus_funk()
+        elif settings_active_int is 5:
+            settings_active_int = 4
+            self.btnx_set_focus_funk()
+
+    def scr_right_funk(self):
+        global debug_enabled, settings_active_int
+        if settings_active_int is 0:
+            settings_active_int = 1
+            self.btnx_set_focus_funk()
+        elif settings_active_int is 1:
+            settings_active_int = 2
+            self.btnx_set_focus_funk()
+        elif settings_active_int is 2:
+            settings_active_int = 3
+            self.btnx_set_focus_funk()
+        elif settings_active_int is 3:
+            settings_active_int = 4
+            self.btnx_set_focus_funk()
+        elif settings_active_int is 4:
+            settings_active_int = 5
+            self.btnx_set_focus_funk()
+        elif settings_active_int is 5:
+            settings_active_int = 0
+            self.btnx_set_focus_funk()
+
+    def hide_settings_funk(self):
+        global settings_active_int
+        if debug_enabled is True:
+            print('-- plugged in: hide_settings_funk')
         self.setting_title_B_var[0].hide()
         self.setting_title_B_var[1].hide()
         self.setting_title_B_var[2].hide()
         self.setting_title_B_var[3].hide()
         self.setting_title_B_var[4].hide()
         self.setting_title_B_var[5].hide()
-        self.show_settings_title()
+        self.settings_source_edit_var[0].hide()
+        self.settings_source_edit_var[1].hide()
+        self.settings_source_edit_var[2].hide()
+        self.settings_source_edit_var[3].hide()
+        self.settings_source_edit_var[4].hide()
+        self.settings_source_edit_var[5].hide()
+        self.settings_dest_edit_var[0].hide()
+        self.settings_dest_edit_var[1].hide()
+        self.settings_dest_edit_var[2].hide()
+        self.settings_dest_edit_var[3].hide()
+        self.settings_dest_edit_var[4].hide()
+        self.settings_dest_edit_var[5].hide()
+        self.tb_0.hide()
+        self.tb_1.hide()
+        self.tb_2.hide()
+        self.tb_3.hide()
+        self.tb_4.hide()
+        self.tb_5.hide()
+        self.tb_label_0.hide()
+        self.paths_readonly_btn_0.hide()
+        self.paths_readonly_btn_1.hide()
+        self.paths_readonly_btn_2.hide()
+        self.paths_readonly_btn_3.hide()
+        self.paths_readonly_btn_4.hide()
+        self.paths_readonly_btn_5.hide()
 
-    def cnfg_prof_btn_style_funk_0(self):
+    def unhighlight_sector_1_funk(self):
+        self.btnx_main_var[0].setStyleSheet(self.default_btnx_main_style)
+        self.btnx_main_var[1].setStyleSheet(self.default_btnx_main_style)
+        self.btnx_main_var[2].setStyleSheet(self.default_btnx_main_style)
+        self.btnx_main_var[3].setStyleSheet(self.default_btnx_main_style)
+        self.btnx_main_var[4].setStyleSheet(self.default_btnx_main_style)
+        self.btnx_main_var[5].setStyleSheet(self.default_btnx_main_style)
+        self.stop_thread_btn_var[0].setStyleSheet(self.default_qpbtn_style)
+        self.stop_thread_btn_var[1].setStyleSheet(self.default_qpbtn_style)
+        self.stop_thread_btn_var[2].setStyleSheet(self.default_qpbtn_style)
+        self.stop_thread_btn_var[3].setStyleSheet(self.default_qpbtn_style)
+        self.stop_thread_btn_var[4].setStyleSheet(self.default_qpbtn_style)
+        self.stop_thread_btn_var[5].setStyleSheet(self.default_qpbtn_style)
+        self.confirm_op_var[0].setStyleSheet(self.default_qpbtn_style)
+        self.confirm_op_var[1].setStyleSheet(self.default_qpbtn_style)
+        self.confirm_op_var[2].setStyleSheet(self.default_qpbtn_style)
+        self.confirm_op_var[3].setStyleSheet(self.default_qpbtn_style)
+        self.confirm_op_var[4].setStyleSheet(self.default_qpbtn_style)
+        self.confirm_op_var[5].setStyleSheet(self.default_qpbtn_style)
+        self.settings_title_var[0].setStyleSheet(self.default_qpbtn_style_txt_0)
+        self.settings_title_var[1].setStyleSheet(self.default_qpbtn_style_txt_0)
+        self.settings_title_var[2].setStyleSheet(self.default_qpbtn_style_txt_0)
+        self.settings_title_var[3].setStyleSheet(self.default_qpbtn_style_txt_0)
+        self.settings_title_var[4].setStyleSheet(self.default_qpbtn_style_txt_0)
+        self.settings_title_var[5].setStyleSheet(self.default_qpbtn_style_txt_0)
+
+    def title_lable_resize(self):
+        self.settings_title_var[0].resize(self.title_lable_w_0, self.title_lable_h_0)
+        self.settings_title_var[1].resize(self.title_lable_w_0, self.title_lable_h_0)
+        self.settings_title_var[2].resize(self.title_lable_w_0, self.title_lable_h_0)
+        self.settings_title_var[3].resize(self.title_lable_w_0, self.title_lable_h_0)
+        self.settings_title_var[4].resize(self.title_lable_w_0, self.title_lable_h_0)
+        self.settings_title_var[5].resize(self.title_lable_w_0, self.title_lable_h_0)
+
+    def unhighlight_profile_btns_funk(self):
         self.cnfg_prof_btn_0.setStyleSheet(self.default_title_config_prof_qpbtn_style)
         self.cnfg_prof_btn_1.setStyleSheet(self.default_title_config_prof_qpbtn_style)
         self.cnfg_prof_btn_2.setStyleSheet(self.default_title_config_prof_qpbtn_style)
@@ -971,164 +1049,125 @@ class App(QMainWindow):
         self.cnfg_prof_btn_8.setStyleSheet(self.default_title_config_prof_qpbtn_style)
         self.cnfg_prof_btn_9.setStyleSheet(self.default_title_config_prof_qpbtn_style)
 
-    def cnfg_prof_funk_0(self):
-        global cfg_f,configuration_engaged
-        if configuration_engaged is False:
+    def set_comp_bool_funk(self):
+        global debug_enabled, compare_bool_var, compare_clicked, thread_engaged_var
+        if thread_engaged_var[compare_clicked] is False:
+            if compare_bool_var[compare_clicked] is False:
+                compare_bool_var[compare_clicked] = True
+                self.btnx_mode_btn_var[compare_clicked].setIcon(QIcon(self.img_mode_1))
+                self.btnx_mode_btn_var[compare_clicked].setStyleSheet(self.default_qpbtn_prsd_style)
+            elif compare_bool_var[compare_clicked] is True:
+                compare_bool_var[compare_clicked] = False
+                self.btnx_mode_btn_var[compare_clicked].setIcon(QIcon(self.img_mode_0))
+                self.btnx_mode_btn_var[compare_clicked].setStyleSheet(self.default_qpbtn_style)
+        elif thread_engaged_var[compare_clicked] is True:
             if debug_enabled is True:
-                print('-- configuration_engaged:', configuration_engaged)
-            self.cnfg_prof_btn_style_funk_0()
-            self.cnfg_prof_btn_0.setStyleSheet(self.default_title_config_prof_qpbtn_style_1)
-            cfg_f = './config_profile_0.txt'
-            self.update_settings_window_thread.start()
-        elif configuration_engaged is True:
-            if debug_enabled is True:
-                print('-- configuration_engaged:', configuration_engaged)
+                print('-- thread engaged: setting mode unavailable')
 
-    def cnfg_prof_funk_1(self):
-        global cfg_f,configuration_engaged
-        if configuration_engaged is False:
-            if debug_enabled is True:
-                print('-- configuration_engaged:', configuration_engaged)
-            self.cnfg_prof_btn_style_funk_0()
-            self.cnfg_prof_btn_1.setStyleSheet(self.default_title_config_prof_qpbtn_style_1)
-            cfg_f = './config_profile_1.txt'
-            self.update_settings_window_thread.start()
-        elif configuration_engaged is True:
-            if debug_enabled is True:
-                print('-- configuration_engaged:', configuration_engaged)
-
-    def cnfg_prof_funk_2(self):
-        global cfg_f,configuration_engaged
-        if configuration_engaged is False:
-            if debug_enabled is True:
-                print('-- configuration_engaged:', configuration_engaged)
-            self.cnfg_prof_btn_style_funk_0()
-            self.cnfg_prof_btn_2.setStyleSheet(self.default_title_config_prof_qpbtn_style_1)
-            cfg_f = './config_profile_2.txt'
-            self.update_settings_window_thread.start()
-        elif configuration_engaged is True:
-            if debug_enabled is True:
-                print('-- configuration_engaged:', configuration_engaged)
-
-    def cnfg_prof_funk_3(self):
-        global cfg_f,configuration_engaged
-        if configuration_engaged is False:
-            if debug_enabled is True:
-                print('-- configuration_engaged:', configuration_engaged)
-            self.cnfg_prof_btn_style_funk_0()
-            self.cnfg_prof_btn_3.setStyleSheet(self.default_title_config_prof_qpbtn_style_1)
-            cfg_f = './config_profile_3.txt'
-            self.update_settings_window_thread.start()
-        elif configuration_engaged is True:
-            if debug_enabled is True:
-                print('-- configuration_engaged:', configuration_engaged)
-
-    def cnfg_prof_funk_4(self):
-        global cfg_f,configuration_engaged
-        if configuration_engaged is False:
-            if debug_enabled is True:
-                print('-- configuration_engaged:', configuration_engaged)
-            self.cnfg_prof_btn_style_funk_0()
-            self.cnfg_prof_btn_4.setStyleSheet(self.default_title_config_prof_qpbtn_style_1)
-            cfg_f = './config_profile_4.txt'
-            self.update_settings_window_thread.start()
-        elif configuration_engaged is True:
-            if debug_enabled is True:
-                print('-- configuration_engaged:', configuration_engaged)
-
-    def cnfg_prof_funk_5(self):
-        global cfg_f,configuration_engaged
-        if configuration_engaged is False:
-            if debug_enabled is True:
-                print('-- configuration_engaged:', configuration_engaged)
-            self.cnfg_prof_btn_style_funk_0()
-            self.cnfg_prof_btn_5.setStyleSheet(self.default_title_config_prof_qpbtn_style_1)
-            cfg_f = './config_profile_5.txt'
-            self.update_settings_window_thread.start()
-        elif configuration_engaged is True:
-            if debug_enabled is True:
-                print('-- configuration_engaged:', configuration_engaged)
-
-    def cnfg_prof_funk_6(self):
-        global cfg_f,configuration_engaged
-        if configuration_engaged is False:
-            if debug_enabled is True:
-                print('-- configuration_engaged:', configuration_engaged)
-            self.cnfg_prof_btn_style_funk_0()
-            self.cnfg_prof_btn_6.setStyleSheet(self.default_title_config_prof_qpbtn_style_1)
-            cfg_f = './config_profile_6.txt'
-            self.update_settings_window_thread.start()
-        elif configuration_engaged is True:
-            if debug_enabled is True:
-                print('-- configuration_engaged:', configuration_engaged)
-
-    def cnfg_prof_funk_7(self):
-        global cfg_f,configuration_engaged
-        if configuration_engaged is False:
-            if debug_enabled is True:
-                print('-- configuration_engaged:', configuration_engaged)
-            self.cnfg_prof_btn_style_funk_0()
-            self.cnfg_prof_btn_7.setStyleSheet(self.default_title_config_prof_qpbtn_style_1)
-            cfg_f = './config_profile_7.txt'
-            self.update_settings_window_thread.start()
-        elif configuration_engaged is True:
-            print('-- configuration_engaged:', configuration_engaged)
-
-    def cnfg_prof_funk_8(self):
-        global cfg_f,configuration_engaged
-        if configuration_engaged is False:
-            if debug_enabled is True:
-                print('-- configuration_engaged:', configuration_engaged)
-            self.cnfg_prof_btn_style_funk_0()
-            self.cnfg_prof_btn_8.setStyleSheet(self.default_title_config_prof_qpbtn_style_1)
-            cfg_f = './config_profile_8.txt'
-            self.update_settings_window_thread.start()
-        elif configuration_engaged is True:
-            if debug_enabled is True:
-                print('-- configuration_engaged:', configuration_engaged)
-
-    def cnfg_prof_funk_9(self):
-        global cfg_f,configuration_engaged
-        if configuration_engaged is False:
-            if debug_enabled is True:
-                print('-- configuration_engaged:', configuration_engaged)
-            self.cnfg_prof_btn_style_funk_0()
-            self.cnfg_prof_btn_9.setStyleSheet(self.default_title_config_prof_qpbtn_style_1)
-            cfg_f = './config_profile_9.txt'
-            self.update_settings_window_thread.start()
-        elif configuration_engaged is True:
-            if debug_enabled is True:
-                print('-- configuration_engaged:', configuration_engaged)
-
-    def setting_title_B_funk(self):
-        global settings_active_int
+    def paths_readonly_button_funk(self):
+        global debug_enabled, settings_active_int
         if debug_enabled is True:
-            print('settings_active_int:', settings_active_int)
-        if len(self.setting_title_B_var[settings_active_int].text()) <= 16:
-            name_str = 'NAME ' + str(settings_active_int) + ': '
-            name_tile[settings_active_int] = self.setting_title_B_var[settings_active_int].text().strip()
-            self.settings_title_var[settings_active_int].setText(self.setting_title_B_var[settings_active_int].text().strip())
-            self.tb_label_0.setText(name_tile[settings_active_int] + ' Output')
-            if os.path.exists(cfg_f):
-                path_item = []
-                with open(cfg_f, 'r') as fo:
-                    for line in fo:
-                        line = line.strip()
-                        if not line.startswith(name_str):
-                            path_item.append(line)
-                        elif line.startswith(name_str):
-                            new_line = name_str + self.setting_title_B_var[settings_active_int].text().strip()
-                            path_item.append(new_line)
-                open(cfg_f, 'w').close()
-                with open(cfg_f, 'a') as fo:
-                    i = 0
-                    for path_items in path_item:
-                        fo.writelines(path_item[i] + '\n')
-                        i += 1
-                fo.close()
-            self.setting_title_B_var[settings_active_int].hide()
+            print('-- plugged in: paths_readonly_button_funk')
+            print('-- settings_active_int', settings_active_int)
+        if self.settings_source_edit_var[settings_active_int].isReadOnly() is True:
+            self.settings_source_edit_var[settings_active_int].setReadOnly(False)
+            self.settings_dest_edit_var[settings_active_int].setReadOnly(False)
+            self.paths_readonly_btn_var[settings_active_int].setIcon(QIcon(self.img_read_ony_false))
+            self.paths_readonly_btn_var[settings_active_int].setIconSize(QSize(8, 21))
+            self.settings_title_var[settings_active_int].hide()
+            self.setting_title_B_var[settings_active_int].setText(name_tile[settings_active_int])
+            self.setting_title_B_var[settings_active_int].show()
+        elif self.settings_source_edit_var[settings_active_int].isReadOnly() is False:
+            self.settings_source_edit_var[settings_active_int].setReadOnly(True)
+            self.settings_dest_edit_var[settings_active_int].setReadOnly(True)
+            self.paths_readonly_btn_var[settings_active_int].setIcon(QIcon(self.img_read_ony_true))
+            self.paths_readonly_btn_var[settings_active_int].setIconSize(QSize(8, 8))
             self.settings_title_var[settings_active_int].show()
-            self.paths_readonly_button_funk()
+            self.setting_title_B_var[settings_active_int].hide()
+
+    def btnx_set_focus_funk(self):
+        global debug_enabled, settings_active_int
+        self.hide_settings_funk()
+        self.unhighlight_sector_1_funk()
+        self.backlabel_resize_0()
+        self.title_lable_resize()
+        self.btnx_main_var[settings_active_int].setStyleSheet(self.default_btnx_main_style_1)
+        self.stop_thread_btn_var[settings_active_int].setStyleSheet(self.default_qpb_highlight)
+        self.confirm_op_var[settings_active_int].setStyleSheet(self.default_qpb_highlight)
+        self.settings_title_var[settings_active_int].setStyleSheet(self.default_qpbtn_style_txt_1)
+        self.settings_source_edit_var[settings_active_int].setStyleSheet(self.default_qle_highlight_0)
+        self.settings_dest_edit_var[settings_active_int].setStyleSheet(self.default_qle_highlight_0)
+        self.settings_source_label.setStyleSheet(self.default_qlbl_highlight)
+        self.settings_dest_label.setStyleSheet(self.default_qlbl_highlight)
+        self.tb_label_0.setStyleSheet(self.default_qlbl_highlight)
+        self.paths_readonly_btn_var[settings_active_int].setStyleSheet(self.default_qpb_highlight)
+        self.settings_title_var[settings_active_int].resize(self.title_lable_w_0, self.title_lable_h_1)
+        self.back_label_var[settings_active_int].resize(self.back_label_w_1, self.back_label_h_1)
+        self.paths_readonly_btn_var[settings_active_int].setIconSize(QSize(8, 8))
+        self.paths_readonly_btn_var[settings_active_int].setIcon(QIcon(self.img_read_ony_true))
+        try:
+            self.tb_label_0.setText(name_tile[settings_active_int] + ' Output')
+        except Exception as e:
+            if debug_enabled is True:
+                print('-- exception:', str(e).strip().encode('utf-8'))
+        self.tb_label_0.show()
+        self.settings_source_edit_var[settings_active_int].show()
+        self.settings_dest_edit_var[settings_active_int].show()
+        self.tb_var[settings_active_int].show()
+        self.paths_readonly_btn_var[settings_active_int].show()
+        self.settings_source_edit_var[settings_active_int].setReadOnly(True)
+        self.settings_dest_edit_var[settings_active_int].setReadOnly(True)
+        self.paths_readonly_btn_var[settings_active_int].setEnabled(True)
+        settings_active_int_prev = settings_active_int
+
+    def backlabel_resize_0(self):
+        i = 0
+        for thread_engaged_vars in thread_engaged_var:
+            if not thread_engaged_var[i] is True:
+                self.back_label_var[i].resize(self.back_label_w_0, self.back_label_h_0)
+            i += 1
+
+    def thread_funk_0(self):
+        self.thread_0.start()
+
+    def thread_funk_1(self):
+        self.thread_1.start()
+
+    def thread_funk_2(self):
+        self.thread_2.start()
+
+    def thread_funk_3(self):
+        self.thread_3.start()
+
+    def thread_funk_4(self):
+        self.thread_4.start()
+
+    def thread_funk_5(self):
+        self.thread_5.start()
+
+    def stop_thr_funk0(self):
+        global debug_enabled
+        self.thread_0.stop_thr()
+
+    def stop_thr_funk1(self):
+        global debug_enabled
+        self.thread_1.stop_thr()
+
+    def stop_thr_funk2(self):
+        global debug_enabled
+        self.thread_2.stop_thr()
+
+    def stop_thr_funk3(self):
+        global debug_enabled
+        self.thread_3.stop_thr()
+
+    def stop_thr_funk4(self):
+        global debug_enabled
+        self.thread_4.stop_thr()
+
+    def stop_thr_funk5(self):
+        global debug_enabled
+        self.thread_5.stop_thr()
 
     def confirm_op0_funk0(self):
         global confirm_op0_bool, confirm_op0_wait, debug_enabled
@@ -1172,6 +1211,66 @@ class App(QMainWindow):
         confirm_op5_bool = True
         confirm_op5_wait = False
 
+    def btnx_set_focus_pre_funk_0(self):
+        global debug_enabled, settings_active_int
+        settings_active_int = 0
+        self.btnx_set_focus_funk()
+
+    def btnx_set_focus_pre_funk_1(self):
+        global debug_enabled, settings_active_int
+        settings_active_int = 1
+        self.btnx_set_focus_funk()
+
+    def btnx_set_focus_pre_funk_2(self):
+        global debug_enabled, settings_active_int
+        settings_active_int = 2
+        self.btnx_set_focus_funk()
+
+    def btnx_set_focus_pre_funk_3(self):
+        global debug_enabled, settings_active_int
+        settings_active_int = 3
+        self.btnx_set_focus_funk()
+
+    def btnx_set_focus_pre_funk_4(self):
+        global debug_enabled, settings_active_int
+        settings_active_int = 4
+        self.btnx_set_focus_funk()
+
+    def btnx_set_focus_pre_funk_5(self):
+        global debug_enabled, settings_active_int
+        settings_active_int = 5
+        self.btnx_set_focus_funk()
+
+    def set_comp_bool_pre_funk0(self):
+        global debug_enabled, compare_clicked
+        compare_clicked = 0
+        self.set_comp_bool_funk()
+
+    def set_comp_bool_pre_funk1(self):
+        global debug_enabled, compare_clicked
+        compare_clicked = 1
+        self.set_comp_bool_funk()
+
+    def set_comp_bool_pre_funk2(self):
+        global debug_enabled, compare_clicked
+        compare_clicked = 2
+        self.set_comp_bool_funk()
+
+    def set_comp_bool_pre_funk3(self):
+        global debug_enabled, compare_clicked
+        compare_clicked = 3
+        self.set_comp_bool_funk()
+
+    def set_comp_bool_pre_funk4(self):
+        global debug_enabled, compare_clicked
+        compare_clicked = 4
+        self.set_comp_bool_funk()
+
+    def set_comp_bool_pre_funk5(self):
+        global debug_enabled, compare_clicked
+        compare_clicked = 5
+        self.set_comp_bool_funk()
+
     def paths_readonly_button_pre_funk_0(self):
         global settings_active_int
         settings_active_int = 0
@@ -1201,69 +1300,6 @@ class App(QMainWindow):
         global settings_active_int
         settings_active_int = 5
         self.paths_readonly_button_funk()
-
-    def paths_readonly_button_funk(self):
-        global debug_enabled, settings_active_int
-        if debug_enabled is True:
-            print('-- plugged in: paths_readonly_button_funk')
-            print('-- settings_active_int', settings_active_int)
-        if self.settings_source_edit_var[settings_active_int].isReadOnly() is True:
-            self.settings_source_edit_var[settings_active_int].setReadOnly(False)
-            self.settings_dest_edit_var[settings_active_int].setReadOnly(False)
-            self.paths_readonly_btn_var[settings_active_int].setIcon(QIcon(self.img_read_ony_false))
-            self.paths_readonly_btn_var[settings_active_int].setIconSize(QSize(8, 21))
-            self.settings_title_var[settings_active_int].hide()
-            self.setting_title_B_var[settings_active_int].setText(name_tile[settings_active_int])
-            self.setting_title_B_var[settings_active_int].show()
-        elif self.settings_source_edit_var[settings_active_int].isReadOnly() is False:
-            self.settings_source_edit_var[settings_active_int].setReadOnly(True)
-            self.settings_dest_edit_var[settings_active_int].setReadOnly(True)
-            self.paths_readonly_btn_var[settings_active_int].setIcon(QIcon(self.img_read_ony_true))
-            self.paths_readonly_btn_var[settings_active_int].setIconSize(QSize(8, 8))
-            self.settings_title_var[settings_active_int].show()
-            self.setting_title_B_var[settings_active_int].hide()
-
-    def scr_left_funk(self):
-        global debug_enabled, settings_active_int
-        if settings_active_int is 0:
-            settings_active_int = 5
-            self.btnx_set_focus_funk()
-        elif settings_active_int is 1:
-            settings_active_int = 0
-            self.btnx_set_focus_funk()
-        elif settings_active_int is 2:
-            settings_active_int = 1
-            self.btnx_set_focus_funk()
-        elif settings_active_int is 3:
-            settings_active_int = 2
-            self.btnx_set_focus_funk()
-        elif settings_active_int is 4:
-            settings_active_int = 3
-            self.btnx_set_focus_funk()
-        elif settings_active_int is 5:
-            settings_active_int = 4
-            self.btnx_set_focus_funk()
-
-    def scr_right_funk(self):
-        global debug_enabled, settings_active_int
-        if settings_active_int is 0:
-            settings_active_int = 1
-            self.btnx_set_focus_funk()
-        elif settings_active_int is 1:
-            settings_active_int = 2
-            self.btnx_set_focus_funk()
-        elif settings_active_int is 2:
-            settings_active_int = 3
-            self.btnx_set_focus_funk()
-        elif settings_active_int is 3:
-            settings_active_int = 4
-            self.btnx_set_focus_funk()
-        elif settings_active_int is 4:
-            settings_active_int = 5
-            self.btnx_set_focus_funk()
-        elif settings_active_int is 5:
-            settings_active_int = 0
-            self.btnx_set_focus_funk()
 
     def settings_source_pre_funk0(self):
         global debug_enabled, source_path_entered, source_selected
@@ -1337,252 +1373,164 @@ class App(QMainWindow):
         dest_path_entered = self.settings_dest_edit_var[5].text()
         self.settings_dest_funk()
 
-    def hide_settings_funk(self):
+    def cnfg_prof_funk_0(self):
+        global cfg_f,configuration_engaged
+        if configuration_engaged is False:
+            if debug_enabled is True:
+                print('-- configuration_engaged:', configuration_engaged)
+            self.unhighlight_profile_btns_funk()
+            self.cnfg_prof_btn_0.setStyleSheet(self.default_title_config_prof_qpbtn_style_1)
+            cfg_f = './config_profile_0.txt'
+            self.update_settings_window_thread.start()
+        elif configuration_engaged is True:
+            if debug_enabled is True:
+                print('-- configuration_engaged:', configuration_engaged)
+
+    def cnfg_prof_funk_1(self):
+        global cfg_f,configuration_engaged
+        if configuration_engaged is False:
+            if debug_enabled is True:
+                print('-- configuration_engaged:', configuration_engaged)
+            self.unhighlight_profile_btns_funk()
+            self.cnfg_prof_btn_1.setStyleSheet(self.default_title_config_prof_qpbtn_style_1)
+            cfg_f = './config_profile_1.txt'
+            self.update_settings_window_thread.start()
+        elif configuration_engaged is True:
+            if debug_enabled is True:
+                print('-- configuration_engaged:', configuration_engaged)
+
+    def cnfg_prof_funk_2(self):
+        global cfg_f,configuration_engaged
+        if configuration_engaged is False:
+            if debug_enabled is True:
+                print('-- configuration_engaged:', configuration_engaged)
+            self.unhighlight_profile_btns_funk()
+            self.cnfg_prof_btn_2.setStyleSheet(self.default_title_config_prof_qpbtn_style_1)
+            cfg_f = './config_profile_2.txt'
+            self.update_settings_window_thread.start()
+        elif configuration_engaged is True:
+            if debug_enabled is True:
+                print('-- configuration_engaged:', configuration_engaged)
+
+    def cnfg_prof_funk_3(self):
+        global cfg_f,configuration_engaged
+        if configuration_engaged is False:
+            if debug_enabled is True:
+                print('-- configuration_engaged:', configuration_engaged)
+            self.unhighlight_profile_btns_funk()
+            self.cnfg_prof_btn_3.setStyleSheet(self.default_title_config_prof_qpbtn_style_1)
+            cfg_f = './config_profile_3.txt'
+            self.update_settings_window_thread.start()
+        elif configuration_engaged is True:
+            if debug_enabled is True:
+                print('-- configuration_engaged:', configuration_engaged)
+
+    def cnfg_prof_funk_4(self):
+        global cfg_f,configuration_engaged
+        if configuration_engaged is False:
+            if debug_enabled is True:
+                print('-- configuration_engaged:', configuration_engaged)
+            self.unhighlight_profile_btns_funk()
+            self.cnfg_prof_btn_4.setStyleSheet(self.default_title_config_prof_qpbtn_style_1)
+            cfg_f = './config_profile_4.txt'
+            self.update_settings_window_thread.start()
+        elif configuration_engaged is True:
+            if debug_enabled is True:
+                print('-- configuration_engaged:', configuration_engaged)
+
+    def cnfg_prof_funk_5(self):
+        global cfg_f,configuration_engaged
+        if configuration_engaged is False:
+            if debug_enabled is True:
+                print('-- configuration_engaged:', configuration_engaged)
+            self.unhighlight_profile_btns_funk()
+            self.cnfg_prof_btn_5.setStyleSheet(self.default_title_config_prof_qpbtn_style_1)
+            cfg_f = './config_profile_5.txt'
+            self.update_settings_window_thread.start()
+        elif configuration_engaged is True:
+            if debug_enabled is True:
+                print('-- configuration_engaged:', configuration_engaged)
+
+    def cnfg_prof_funk_6(self):
+        global cfg_f,configuration_engaged
+        if configuration_engaged is False:
+            if debug_enabled is True:
+                print('-- configuration_engaged:', configuration_engaged)
+            self.unhighlight_profile_btns_funk()
+            self.cnfg_prof_btn_6.setStyleSheet(self.default_title_config_prof_qpbtn_style_1)
+            cfg_f = './config_profile_6.txt'
+            self.update_settings_window_thread.start()
+        elif configuration_engaged is True:
+            if debug_enabled is True:
+                print('-- configuration_engaged:', configuration_engaged)
+
+    def cnfg_prof_funk_7(self):
+        global cfg_f,configuration_engaged
+        if configuration_engaged is False:
+            if debug_enabled is True:
+                print('-- configuration_engaged:', configuration_engaged)
+            self.unhighlight_profile_btns_funk()
+            self.cnfg_prof_btn_7.setStyleSheet(self.default_title_config_prof_qpbtn_style_1)
+            cfg_f = './config_profile_7.txt'
+            self.update_settings_window_thread.start()
+        elif configuration_engaged is True:
+            print('-- configuration_engaged:', configuration_engaged)
+
+    def cnfg_prof_funk_8(self):
+        global cfg_f,configuration_engaged
+        if configuration_engaged is False:
+            if debug_enabled is True:
+                print('-- configuration_engaged:', configuration_engaged)
+            self.unhighlight_profile_btns_funk()
+            self.cnfg_prof_btn_8.setStyleSheet(self.default_title_config_prof_qpbtn_style_1)
+            cfg_f = './config_profile_8.txt'
+            self.update_settings_window_thread.start()
+        elif configuration_engaged is True:
+            if debug_enabled is True:
+                print('-- configuration_engaged:', configuration_engaged)
+
+    def cnfg_prof_funk_9(self):
+        global cfg_f,configuration_engaged
+        if configuration_engaged is False:
+            if debug_enabled is True:
+                print('-- configuration_engaged:', configuration_engaged)
+            self.unhighlight_profile_btns_funk()
+            self.cnfg_prof_btn_9.setStyleSheet(self.default_title_config_prof_qpbtn_style_1)
+            cfg_f = './config_profile_9.txt'
+            self.update_settings_window_thread.start()
+        elif configuration_engaged is True:
+            if debug_enabled is True:
+                print('-- configuration_engaged:', configuration_engaged)
+
+    def setting_title_B_funk(self):
         global settings_active_int
         if debug_enabled is True:
-            print('-- plugged in: hide_settings_funk')
-        self.setting_title_B_var[0].hide()
-        self.setting_title_B_var[1].hide()
-        self.setting_title_B_var[2].hide()
-        self.setting_title_B_var[3].hide()
-        self.setting_title_B_var[4].hide()
-        self.setting_title_B_var[5].hide()
-        self.settings_source_edit_var[0].hide()
-        self.settings_source_edit_var[1].hide()
-        self.settings_source_edit_var[2].hide()
-        self.settings_source_edit_var[3].hide()
-        self.settings_source_edit_var[4].hide()
-        self.settings_source_edit_var[5].hide()
-        self.settings_dest_edit_var[0].hide()
-        self.settings_dest_edit_var[1].hide()
-        self.settings_dest_edit_var[2].hide()
-        self.settings_dest_edit_var[3].hide()
-        self.settings_dest_edit_var[4].hide()
-        self.settings_dest_edit_var[5].hide()
-        self.tb_0.hide()
-        self.tb_1.hide()
-        self.tb_2.hide()
-        self.tb_3.hide()
-        self.tb_4.hide()
-        self.tb_5.hide()
-        self.tb_label_0.hide()
-        self.paths_readonly_btn_0.hide()
-        self.paths_readonly_btn_1.hide()
-        self.paths_readonly_btn_2.hide()
-        self.paths_readonly_btn_3.hide()
-        self.paths_readonly_btn_4.hide()
-        self.paths_readonly_btn_5.hide()
-
-    def btnx_set_focus_pre_funk_0(self):
-        global debug_enabled, settings_active_int
-        settings_active_int = 0
-        self.btnx_set_focus_funk()
-
-    def btnx_set_focus_pre_funk_1(self):
-        global debug_enabled, settings_active_int
-        settings_active_int = 1
-        self.btnx_set_focus_funk()
-
-    def btnx_set_focus_pre_funk_2(self):
-        global debug_enabled, settings_active_int
-        settings_active_int = 2
-        self.btnx_set_focus_funk()
-
-    def btnx_set_focus_pre_funk_3(self):
-        global debug_enabled, settings_active_int
-        settings_active_int = 3
-        self.btnx_set_focus_funk()
-
-    def btnx_set_focus_pre_funk_4(self):
-        global debug_enabled, settings_active_int
-        settings_active_int = 4
-        self.btnx_set_focus_funk()
-
-    def btnx_set_focus_pre_funk_5(self):
-        global debug_enabled, settings_active_int
-        settings_active_int = 5
-        self.btnx_set_focus_funk()
-
-    def settings_title_focus_false(self):
-        self.settings_title_var[0].setStyleSheet(self.default_qpbtn_style_txt_0)
-        self.settings_title_var[1].setStyleSheet(self.default_qpbtn_style_txt_0)
-        self.settings_title_var[2].setStyleSheet(self.default_qpbtn_style_txt_0)
-        self.settings_title_var[3].setStyleSheet(self.default_qpbtn_style_txt_0)
-        self.settings_title_var[4].setStyleSheet(self.default_qpbtn_style_txt_0)
-        self.settings_title_var[5].setStyleSheet(self.default_qpbtn_style_txt_0)
-
-    def show_settings_title(self):
-        self.settings_title_var[0].show()
-        self.settings_title_var[1].show()
-        self.settings_title_var[2].show()
-        self.settings_title_var[3].show()
-        self.settings_title_var[4].show()
-        self.settings_title_var[5].show()
-
-    def btnx_set_focus_funk(self):
-        global debug_enabled, settings_active_int
-        self.hide_settings_funk()
-        self.show_settings_title()
-        self.settings_title_focus_false()
-        self.highlight_off_0()
-        self.backlabel_resize_0()
-        self.title_lable_resize()
-        self.btnx_main_var[settings_active_int].setStyleSheet(self.default_btnx_main_style_1)
-        self.stop_thread_btn_var[settings_active_int].setStyleSheet(self.default_qpb_highlight)
-        self.confirm_op_var[settings_active_int].setStyleSheet(self.default_qpb_highlight)
-        self.settings_title_var[settings_active_int].setStyleSheet(self.default_qpbtn_style_txt_1)
-        self.settings_source_edit_var[settings_active_int].setStyleSheet(self.default_qle_highlight_0)
-        self.settings_dest_edit_var[settings_active_int].setStyleSheet(self.default_qle_highlight_0)
-        self.settings_source_label.setStyleSheet(self.default_qlbl_highlight)
-        self.settings_dest_label.setStyleSheet(self.default_qlbl_highlight)
-        self.tb_label_0.setStyleSheet(self.default_qlbl_highlight)
-        self.paths_readonly_btn_var[settings_active_int].setStyleSheet(self.default_qpb_highlight)
-        self.settings_title_var[settings_active_int].resize(self.title_lable_w_0, self.title_lable_h_1)
-        self.back_label_var[settings_active_int].resize(self.back_label_w_1, self.back_label_h_1)
-        self.paths_readonly_btn_var[settings_active_int].setIconSize(QSize(8, 8))
-        self.paths_readonly_btn_var[settings_active_int].setIcon(QIcon(self.img_read_ony_true))
-        try:
+            print('settings_active_int:', settings_active_int)
+        if len(self.setting_title_B_var[settings_active_int].text()) <= 16:
+            name_str = 'NAME ' + str(settings_active_int) + ': '
+            name_tile[settings_active_int] = self.setting_title_B_var[settings_active_int].text().strip()
+            self.settings_title_var[settings_active_int].setText(self.setting_title_B_var[settings_active_int].text().strip())
             self.tb_label_0.setText(name_tile[settings_active_int] + ' Output')
-        except Exception as e:
-            if debug_enabled is True:
-                print('-- exception:', str(e).strip().encode('utf-8'))
-        self.tb_label_0.show()
-        self.settings_source_edit_var[settings_active_int].show()
-        self.settings_dest_edit_var[settings_active_int].show()
-        self.tb_var[settings_active_int].show()
-        self.paths_readonly_btn_var[settings_active_int].show()
-        self.settings_source_edit_var[settings_active_int].setReadOnly(True)
-        self.settings_dest_edit_var[settings_active_int].setReadOnly(True)
-        self.paths_readonly_btn_var[settings_active_int].setEnabled(True)
-        settings_active_int_prev = settings_active_int
-
-    def highlight_off_0(self):
-        self.btnx_main_var[0].setStyleSheet(self.default_btnx_main_style)
-        self.btnx_main_var[1].setStyleSheet(self.default_btnx_main_style)
-        self.btnx_main_var[2].setStyleSheet(self.default_btnx_main_style)
-        self.btnx_main_var[3].setStyleSheet(self.default_btnx_main_style)
-        self.btnx_main_var[4].setStyleSheet(self.default_btnx_main_style)
-        self.btnx_main_var[5].setStyleSheet(self.default_btnx_main_style)
-        self.stop_thread_btn_var[0].setStyleSheet(self.default_qpbtn_style)
-        self.stop_thread_btn_var[1].setStyleSheet(self.default_qpbtn_style)
-        self.stop_thread_btn_var[2].setStyleSheet(self.default_qpbtn_style)
-        self.stop_thread_btn_var[3].setStyleSheet(self.default_qpbtn_style)
-        self.stop_thread_btn_var[4].setStyleSheet(self.default_qpbtn_style)
-        self.stop_thread_btn_var[5].setStyleSheet(self.default_qpbtn_style)
-        self.confirm_op_var[0].setStyleSheet(self.default_qpbtn_style)
-        self.confirm_op_var[1].setStyleSheet(self.default_qpbtn_style)
-        self.confirm_op_var[2].setStyleSheet(self.default_qpbtn_style)
-        self.confirm_op_var[3].setStyleSheet(self.default_qpbtn_style)
-        self.confirm_op_var[4].setStyleSheet(self.default_qpbtn_style)
-        self.confirm_op_var[5].setStyleSheet(self.default_qpbtn_style)
-        self.settings_title_var[0].setStyleSheet(self.default_qpbtn_style_txt_0)
-        self.settings_title_var[1].setStyleSheet(self.default_qpbtn_style_txt_0)
-        self.settings_title_var[2].setStyleSheet(self.default_qpbtn_style_txt_0)
-        self.settings_title_var[3].setStyleSheet(self.default_qpbtn_style_txt_0)
-        self.settings_title_var[4].setStyleSheet(self.default_qpbtn_style_txt_0)
-        self.settings_title_var[5].setStyleSheet(self.default_qpbtn_style_txt_0)
-
-    def backlabel_resize_0(self):
-        i = 0
-        for thread_engaged_vars in thread_engaged_var:
-            if not thread_engaged_var[i] is True:
-                self.back_label_var[i].resize(self.back_label_w_0, self.back_label_h_0)
-            i += 1
-
-    def title_lable_resize(self):
-        self.settings_title_var[0].resize(self.title_lable_w_0, self.title_lable_h_0)
-        self.settings_title_var[1].resize(self.title_lable_w_0, self.title_lable_h_0)
-        self.settings_title_var[2].resize(self.title_lable_w_0, self.title_lable_h_0)
-        self.settings_title_var[3].resize(self.title_lable_w_0, self.title_lable_h_0)
-        self.settings_title_var[4].resize(self.title_lable_w_0, self.title_lable_h_0)
-        self.settings_title_var[5].resize(self.title_lable_w_0, self.title_lable_h_0)
-
-    def thread_funk_0(self):
-        self.thread_0.start()
-
-    def thread_funk_1(self):
-        self.thread_1.start()
-
-    def thread_funk_2(self):
-        self.thread_2.start()
-
-    def thread_funk_3(self):
-        self.thread_3.start()
-
-    def thread_funk_4(self):
-        self.thread_4.start()
-
-    def thread_funk_5(self):
-        self.thread_5.start()
-
-    def set_comp_bool_pre_funk0(self):
-        global debug_enabled, compare_clicked
-        compare_clicked = 0
-        self.set_comp_bool_funk()
-
-    def set_comp_bool_pre_funk1(self):
-        global debug_enabled, compare_clicked
-        compare_clicked = 1
-        self.set_comp_bool_funk()
-
-    def set_comp_bool_pre_funk2(self):
-        global debug_enabled, compare_clicked
-        compare_clicked = 2
-        self.set_comp_bool_funk()
-
-    def set_comp_bool_pre_funk3(self):
-        global debug_enabled, compare_clicked
-        compare_clicked = 3
-        self.set_comp_bool_funk()
-
-    def set_comp_bool_pre_funk4(self):
-        global debug_enabled, compare_clicked
-        compare_clicked = 4
-        self.set_comp_bool_funk()
-
-    def set_comp_bool_pre_funk5(self):
-        global debug_enabled, compare_clicked
-        compare_clicked = 5
-        self.set_comp_bool_funk()
-
-    def set_comp_bool_funk(self):
-        global debug_enabled, compare_bool_var, compare_clicked, thread_engaged_var
-        if thread_engaged_var[compare_clicked] is False:
-            if compare_bool_var[compare_clicked] is False:
-                compare_bool_var[compare_clicked] = True
-                self.btnx_mode_btn_var[compare_clicked].setIcon(QIcon(self.img_mode_1))
-                self.btnx_mode_btn_var[compare_clicked].setStyleSheet(self.default_qpbtn_prsd_style)
-            elif compare_bool_var[compare_clicked] is True:
-                compare_bool_var[compare_clicked] = False
-                self.btnx_mode_btn_var[compare_clicked].setIcon(QIcon(self.img_mode_0))
-                self.btnx_mode_btn_var[compare_clicked].setStyleSheet(self.default_qpbtn_style)
-        elif thread_engaged_var[compare_clicked] is True:
-            if debug_enabled is True:
-                print('-- thread engaged: setting mode unavailable')
-
-    def stop_thr_funk0(self):
-        global debug_enabled
-        self.thread_0.stop_thr()
-
-    def stop_thr_funk1(self):
-        global debug_enabled
-        self.thread_1.stop_thr()
-
-    def stop_thr_funk2(self):
-        global debug_enabled
-        self.thread_2.stop_thr()
-
-    def stop_thr_funk3(self):
-        global debug_enabled
-        self.thread_3.stop_thr()
-
-    def stop_thr_funk4(self):
-        global debug_enabled
-        self.thread_4.stop_thr()
-
-    def stop_thr_funk5(self):
-        global debug_enabled
-        self.thread_5.stop_thr()
+            if os.path.exists(cfg_f):
+                path_item = []
+                with open(cfg_f, 'r') as fo:
+                    for line in fo:
+                        line = line.strip()
+                        if not line.startswith(name_str):
+                            path_item.append(line)
+                        elif line.startswith(name_str):
+                            new_line = name_str + self.setting_title_B_var[settings_active_int].text().strip()
+                            path_item.append(new_line)
+                open(cfg_f, 'w').close()
+                with open(cfg_f, 'a') as fo:
+                    i = 0
+                    for path_items in path_item:
+                        fo.writelines(path_item[i] + '\n')
+                        i += 1
+                fo.close()
+            self.setting_title_B_var[settings_active_int].hide()
+            self.settings_title_var[settings_active_int].show()
+            self.paths_readonly_button_funk()
 
     def sanitize_input_funk(self):
         global valid_len_bool, valid_drive_bool, valid_char_bool, valid_non_win_res_nm_bool, source_path_entered, dest_path_entered, sanitize_input_int
